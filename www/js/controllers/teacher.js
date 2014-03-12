@@ -95,4 +95,4 @@ myApp.controllers.controller('TeacherCtrl', ['$scope', '$rootScope', '$window', 
 						}});
 			};
 			// Student list Controller
-	}])
+	}]);

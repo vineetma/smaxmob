@@ -20,6 +20,8 @@
    				 			if($scope.user_role == 1) {
    				 				console.log("Compared...");
    				 				$window.location="admin_menu.html";
+   				 			}else if($scope.user_role == 2){
+   				 				$window.location ="Student.html#/edit/"+$scope.userEmail;
    				 			}
    				 		}
    			 		});
@@ -27,4 +29,4 @@
        		});
     		
     	};
-    }])
+    }]);

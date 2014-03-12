@@ -25,4 +25,4 @@ myApp.controllers.controller('StudentListCtrl', ['$scope', '$rootScope', '$windo
 			 	}
    		});
     };
-   }])
+   }]);

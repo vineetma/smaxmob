@@ -1,5 +1,7 @@
-myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', function ($scope, $rootScope, $window, $location, $http) {
+myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', '$routeParams', function ($scope, $rootScope, $window, $location, $http, $routeParams) {
 	$scope.id = 0;
+	console.log("Email", $routeParams.email);
+	$scope.email = $routeParams.email;
     $scope.$watch('firstName', function(ov, nv){
    	 console.log("FirstName updated:", ov, nv);
    	 console.log("First: ", $scope.firstName);
@@ -19,7 +21,8 @@ myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', 
 			 			'section': $scope.section,
 			 			'semester' : $scope.semester,
 			 			'department' : $scope.department,
-			 			'password': $scope.password
+			 			'password': $scope.password,
+			 			'role':$scope.role
 			 		}
    		    },
    		    success: function(data) {
@@ -98,6 +101,8 @@ myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', 
    						}
    					}});
    		};
+   		$scope.readStudent();
+
    		/*
 			 * Employee.readAll();
 			 * $http.post('http://localhost:8080/StudentTimetable/provision',
@@ -108,4 +113,4 @@ myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', 
 			 * $scope.password } } ).success(function(data){ console.log("Return
 			 * value from ajax call: ", data); });
 			 */
-   }])
+   }]);

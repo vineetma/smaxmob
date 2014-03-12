@@ -27,4 +27,4 @@ myApp.controllers.controller('SignUpCtrl', ['$scope', '$rootScope', '$window', '
 			 	}
    		});
     };
-}])
+}]);
