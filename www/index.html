@@ -18,11 +18,21 @@
     <script src="js/controllers/login.js"></script>
  <!--    <script src="../../js/memory-services.js"></script>-->
     <script src="js/rest-services.js"></script> 
+    <style type="text/css">
     
+    </style>
     </head>
 <body ng-controller="loginCtrl">
-	<h1>User Login</h1>
+
+<div class="topcoat-navigation-bar ng-scope">
+<div class="topcoat-navigation-bar_item center full">
+<h1 class ="topcoat-navigation-bar_tittle">User Login</h1>
+</div>
+</div>
+
+	
 	<form>
+	
 	<input type="text" class="topcoat-text-input" placeholder="email" ng-model="userEmail" /><br/>
 	<input type="password" class="topcoat-text-input" placeholder="Password" ng-model="userPassword" /> <br/>
 	<input type="button" name="login" ng-click="login()" value="Login" />

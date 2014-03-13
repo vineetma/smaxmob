@@ -103,14 +103,5 @@ myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', 
    		};
    		$scope.readStudent();
 
-   		/*
-			 * Employee.readAll();
-			 * $http.post('http://localhost:8080/StudentTimetable/provision',
-			 * {'action':'add', 'student':{ 'rollNo': $scope.rollNo,
-			 * 'firstName':$scope.firstName, 'lastName': $scope.lastName,
-			 * 'email' : $scope.email, 'section': $scope.section, 'semester' :
-			 * $scope.semester, 'department' : $scope.department, 'password':
-			 * $scope.password } } ).success(function(data){ console.log("Return
-			 * value from ajax call: ", data); });
-			 */
+   		
    }]);

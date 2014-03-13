@@ -22,7 +22,12 @@
    				 				$window.location="admin_menu.html";
    				 			}else if($scope.user_role == 2){
    				 				$window.location ="Student.html#/edit/"+$scope.userEmail;
-   				 			}
+   				 			//	console.log("email",$scope.userEmail);
+   				 			}else if($scope.user_role == 3){
+   				 			// console.log("email",$scope.userEmail);
+   				 				$window.location ="teacher.html#/edit/"+$scope.userEmail;
+   				 			
+   				 		}
    				 		}
    			 		});
    			 	}
