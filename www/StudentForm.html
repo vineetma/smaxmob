@@ -1,5 +1,6 @@
-	<h1>Student Form</h1>
-	<form>
+
+	<h1 align="center">Student Form</h1>
+	<form align="center">
 	<input type="hidden" ng-model="id" />
 	
 <!-- 	<label for="firstName">First Name: </label> -->
@@ -12,30 +13,30 @@
 	<input type="text" class="topcoat-text-input" placeholder="Roll No" ng-model="rollNo" /> <br/>
 <!-- 	<label for="department">Department</label> -->
 	<input type="text" class="topcoat-text-input" placeholder="E-Mail" ng-model="email" /> <br/>
-	<select ng-model="department">
+	<select class="topcoat-text-input"  ng-model="department">
 	<option value="">--Select Department--</option>
 	<option value="1">Electronics</option>
 	<option value="2">Others</option>
 	</select> <br/>
 <!-- 	<label for="semester">Department</label> -->
-	<select ng-model="semester">
+	<select class="topcoat-text-input"   ng-model="semester">
 	<option value="">--Select Term--</option>
 	<option value="1">Term1</option>
 	<option value="2">Term2</option>
 	</select> <br/>
 <!-- 	<label for="section">Section</label> -->
-	<select ng-model="section">
+	<select  class="topcoat-text-input"  ng-model="section">
 	<option value="">---Select Section---</option>
 	<option value="1">A</option>
 	<option value="2">B</option>
 	</select> <br/>
 	
-	<input type="button" name="create" ng-click="createStudent()" value="Create" />
-	<input type="button" name="update" value="Update" ng-click="updateStudent()"/>
-	<input type="button" name="getStudentRecord"
+	<input class="topcoat-button" type="button" name="create" ng-click="createStudent()" value="Create" />
+	<input class="topcoat-button" type="button" name="update" value="Update" ng-click="updateStudent()"/>
+	<input class="topcoat-button" type="button" name="getStudentRecord"
 		value="Get Student Record" ng-click="readStudent()" />
-	<input type="button" name="delete" value="Delete" />
-	<input type="button" name="list" value="List" />
+	<input class="topcoat-button" type="button" name="delete" value="Delete" />
+	<input class="topcoat-button" type="button" name="list" value="List" />
 	</form>
 	Data Entered by you: <br/>
 	Response: {{status}}: {{statusCode}}, {{statusMessage}}

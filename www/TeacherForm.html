@@ -1,7 +1,8 @@
 
-<h1>Teacher Form2</h1>
+<h1 align="center">Teacher Form2</h1>
 
-<form>
+<form align="center">
+
 <input type="hidden" ng-model="id" /> <!-- 	<label for="firstName">First Name: </label> -->
 <input type="text" class="topcoat-text-input" placeholder="First Name"
 	ng-model="firstName" /><br />
@@ -13,19 +14,20 @@
 <input type ="teacherId" class="topcoat-text-input" placeholder="Teacher-Id" ng-model="teacherId"/>
 <br />
 <input type="text" class="topcoat-text-input" placeholder="E-Mail"ng-model="email" /> <br />
-<select ng-model="department">
+<select class="topcoat-text-input"  ng-model="department">
 	<option value="">--Select Department--</option>
 	<option value="1">Electronics</option>
 	<option value="2">Others</option>
 </select> <br />
 
 
-<input type="button" name="create" ng-click="createTeacher()"value="Create" />
- <input type="button" name="update" value="Update"ng-click="updateTeacher()" />
- <input type="button" name="getTeacherRecord"value="Get Teacher Record" ng-click="readTeacher()" />
-  <input type="button" name="delete"value="Delete" /> 
-  <input type="button" name="list" value="List" />
+<input type="button" name="create" ng-click="createTeacher()"value="Create" class="topcoat-text-input" />
+ <input type="button" name="update" value="Update"ng-click="updateTeacher()" class="topcoat-text-input"/>
+ <input type="button"   value="Get Teacher Record" ng-click="readTeacher()" class="topcoat-text-input" />
+  <input type="button" name="delete"value="Delete"  class="topcoat-text-input"/> 
+  <input type="button" name="list" value="List" class="topcoat-text-input" />
 	</form>
+
 Data Entered by you:
 <br />
 Response: {{status}}: {{statusCode}}, {{statusMessage}}

@@ -2,6 +2,7 @@ myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', 
 	$scope.id = 0;
 	console.log("Email", $routeParams.email);
 	$scope.email = $routeParams.email;
+	
     $scope.$watch('firstName', function(ov, nv){
    	 console.log("FirstName updated:", ov, nv);
    	 console.log("First: ", $scope.firstName);

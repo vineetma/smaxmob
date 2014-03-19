@@ -1,13 +1,15 @@
     myApp.controllers.controller('loginCtrl', ['$scope', '$window', '$http', function ($scope, $window, $http) {
     	console.log("In here..");
-    	$scope.login = function() {
+    	    	$scope.login = function() {
        		$.ajax({
        		    url:serverURL+'/login',
        		    dataType: 'jsonp',
        		    data: {'action':'validateUser',
    		 		    	'user_login':$scope.userEmail,
    		 		    	'user_password': $scope.userPassword
+   		 		   
        		    },
+       		    
        		    success: function(data) {
    			 		console.log(data);
    			 		$scope.$apply(function(){
@@ -25,7 +27,7 @@
    				 			//	console.log("email",$scope.userEmail);
    				 			}else if($scope.user_role == 3){
    				 			// console.log("email",$scope.userEmail);
-   				 				$window.location ="teacher.html#/edit/"+$scope.userEmail;
+   				 				$window.location ="teacher_menu.html#/navigation/"+$scope.userEmail;
    				 			
    				 		}
    				 		}
