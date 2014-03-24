@@ -7,4 +7,10 @@
     	    		
     	    	};
     	    	
+    	    	$scope.getTimeTable = function() {
+    	    		console.log("Here..to test..");
+    	    		$window.location="GetTimeTable.html";
+    	    		
+    	    	};
+    	    	
     }]);
