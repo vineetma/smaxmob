@@ -3,29 +3,34 @@
 
 <form align="center">
 
-<input type="hidden" ng-model="id" /> <!-- 	<label for="firstName">First Name: </label> -->
-<input type="text" class="topcoat-text-input" placeholder="First Name"
-	ng-model="firstName" /><br />
-<!-- 	<label for="lastName">Last Name: </label> --> <input type="text"
-	class="topcoat-text-input" placeholder="Last Name" ng-model="lastName" /><br />
-<!-- 	<label for="password">Password</label> -->                 
-<input type="password"class="topcoat-text-input" placeholder="Password" ng-model="password" />
+<input type="hidden" ng-model="id" />
+<div class="controls">
+ <!--<label for="firstName">First Name: </label> -->
+<input type="text"  placeholder="First Name"ng-model="firstName" /><br />
+<!--<label for="lastName">Last Name: </label> -->
+ <input type="text" placeholder="Last Name" ng-model="lastName" /><br />
+<!--<label for="password">Password</label> -->                 
+<input type="password" placeholder="Password" ng-model="password" />
 <br />
-<input type ="teacherId" class="topcoat-text-input" placeholder="Teacher-Id" ng-model="teacherId"/>
+<input type ="text"  placeholder="Teacher-Id" ng-model="teacherId"/>
 <br />
-<input type="text" class="topcoat-text-input" placeholder="E-Mail"ng-model="email" /> <br />
-<select class="topcoat-text-input"  ng-model="department">
+<input type="text"  placeholder="E-Mail"ng-model="email" /> <br />
+</div>
+<select   ng-model="department">
 	<option value="">--Select Department--</option>
 	<option value="1">Electronics</option>
 	<option value="2">Others</option>
 </select> <br />
 
-
-<input type="button" name="create" ng-click="createTeacher()"value="Create" class="topcoat-text-input" />
- <input type="button" name="update" value="Update"ng-click="updateTeacher()" class="topcoat-text-input"/>
- <input type="button"   value="Get Teacher Record" ng-click="readTeacher()" class="topcoat-text-input" />
-  <input type="button" name="delete"value="Delete"  class="topcoat-text-input"/> 
-  <input type="button" name="list" value="List" class="topcoat-text-input" />
+<div class="control-group">
+    <div class="controls">
+<input type="button" name="create" ng-click="createTeacher()"value="Create" class="btn btn-primary" />
+ <input type="button" name="update" value="Update"ng-click="updateTeacher()" class="btn btn-primary"/>
+ <input type="button"   value="Get Teacher Record" ng-click="readTeacher()" class="btn btn-primary" />
+  <input type="button" name="delete"value="Delete"  class="btn btn-primary"/> 
+  <input type="button" name="list" value="List" class="btn btn-primary" />
+  </div>
+  </div>
 	</form>
 
 Data Entered by you:
