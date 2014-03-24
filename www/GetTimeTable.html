@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="myApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/topcoat-0.8.0/css/topcoat-mobile-light.css" type="text/stylesheet" />
+<link rel="stylesheet" href="css/styles.css" type="text/stylesheet" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- <script src="../../lib/jquery-1.11.0.min.js" type="text/javascript"></script> -->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-touch.js"></script>
+    <script src="lib/angular-resource.js"></script>
+    <script src="lib/angular-animate.js"></script>
+    <script src="lib/angular-route.js"></script> 
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/controllers/weekTimeTable.js"></script>
+ <!--    <script src="../../js/memory-services.js"></script>-->
+    <script src="js/rest-services.js"></script> 
+    
+    </head>
+<body ng-controller="weekTimeTableCtrl">
+	<h1>NewTimetable Form</h1>
+	<form>
+	<input type="hidden" ng-model="id" />
+	<select ng-model="department">
+	<option value="">--Select Department--</option>
+	<option value="1">Electronics</option>
+	<option value="2">Others</option>
+	</select> <br/>
+<!-- 	<label for="semester">Department</label> -->
+	<select ng-model="semester">
+	<option value="">--Select Term--</option>
+	<option value="1">Term1</option>
+	<option value="2">Term2</option>
+	</select> <br/>
+<!-- 	<label for="section">Section</label> -->
+	<select ng-model="section">
+	<option value="">---Select Section---</option>
+	<option value="1">A</option>
+	<option value="2">B</option>
+	</select> <br/>
+	
+	<input type="button" name="create" ng-click="timeTable()" value="GO" />
+	
+	</form>
+	Data Entered by you: <br/>
+	Response: {{status}}: {{statusCode}}, {{statusMessage}}
+	<table border='1' cellspacing='0'>
+<thead>
+<tr>
+<th>Day</th><th>P1</th><th>P2</th><th>P3</th><th>P4</th><th>P5</th><th>P6</th></tr>
+</thead>
+<tbody>
+<tr ng-repeat="day in timeTable[0]">
+	<td>{{day[0].day}}</td>
+	<td>{{day[0].subjectTeacher.subject.name}},{{day[0].subjectTeacher.teacher.FName}},{{day[0].subjectTeacher.teacher.LName}},{{day[0].room}} </td>
+    <td>{{day[1].subjectTeacher.subject.name}},{{day[1].subjectTeacher.teacher.FName}},{{day[1].subjectTeacher.teacher.LName}},{{day[1].room}} </td>
+    <td>{{day[2].subjectTeacher.subject.name}},{{day[2].subjectTeacher.teacher.FName}},{{day[2].subjectTeacher.teacher.LName}},{{day[2].room}} </td>
+    <td>{{day[3].subjectTeacher.subject.name}},{{day[3].subjectTeacher.teacher.FName}},{{day[3].subjectTeacher.teacher.LName}},{{day[3].room}} </td>
+    <td>{{day[4].subjectTeacher.subject.name}},{{day[4].subjectTeacher.teacher.FName}},{{day[4].subjectTeacher.teacher.LName}},{{day[4].room}} </td>
+    <td>{{day[5].subjectTeacher.subject.name}},{{day[5].subjectTeacher.teacher.FName}},{{day[5].subjectTeacher.teacher.LName}},{{day[5].room}} </td>
+</tr>
+</tbody>
+</table>
+	
+</body>
+
+</html>

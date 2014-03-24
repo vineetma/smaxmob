@@ -21,7 +21,7 @@ myApp.controllers.controller('NewTimetableCtrl', ['$scope', '$rootScope', '$wind
    				 		$scope.status = data.status;
    				 		$scope.statusCode = data.status_code;
    				 		$scope.statusMessage = data.status_message;
-   				 	
+   				 	$scope.timeTableList = data.timeTable;
    				 		
    			 		});
    			 	}
