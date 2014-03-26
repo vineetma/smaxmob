@@ -13,5 +13,8 @@
     	    		
     	    	};
     	    	
+				$scope.listStudents = function() {
+					$window.location="StudentList.html#/"+$scope.email;
+				}
     	    	
     }]);
