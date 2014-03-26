@@ -3,6 +3,8 @@ myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', 
 	console.log("Email", $routeParams.email);
 	$scope.email = $routeParams.email;
 	
+	
+	
     $scope.$watch('firstName', function(ov, nv){
    	 console.log("FirstName updated:", ov, nv);
    	 console.log("First: ", $scope.firstName);
@@ -48,11 +50,14 @@ myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', 
    						console.log("Read response: ", data);
    						if(data.status) {
    							$scope.firstName = data.student.firstName;
+   							console.log($scope.firstName);
    							$scope.lastName = data.student.lastName;
    							$scope.rollNo = data.student.rollNo;
    							$scope.section = data.student.section;
    							$scope.semester = data.student.semester;
+   							console.log($scope.semester);
    							$scope.department= data.student.department;
+   							console.log($scope.department);
    							$scope.password = data.student.password;
    							$scope.id = data.student.id;
    						} else {
@@ -102,7 +107,13 @@ myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', 
    						}
    					}});
    		};
-   		$scope.readStudent();
+   		
 
+   	if($location.path().split("/")[1] == "edit")
+   	$scope.readStudent();
+
+   	$scope.back = function() {
+   		$location.path("navigation/"+$scope.email );
+   	};
    		
    }]);

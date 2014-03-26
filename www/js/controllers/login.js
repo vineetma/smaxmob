@@ -21,7 +21,7 @@
    	   				 		console.log($scope.user_role);
    				 			if($scope.user_role == 1) {
    				 				console.log("Compared...");
-   				 				$window.location="admin_menu.html";
+   				 				$window.location="admin_menu.html#/admin/";
    				 			}else if($scope.user_role == 2){
    				 				$window.location ="student_menu.html#/navigation/"+$scope.userEmail;
    				 			//	console.log("email",$scope.userEmail);
@@ -36,4 +36,8 @@
        		});
     		
     	};
+    	$scope.signUp= function(){
+    		$window.location ="NewUser.html#/add/";
+    	};
+    	
     }]);

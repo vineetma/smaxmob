@@ -97,5 +97,6 @@ myApp.controllers.controller('TeacherCtrl', ['$scope', '$rootScope', '$window', 
 							}
 						}});
 			};
-			$scope.readTeacher();
+			if($location.path().split("/")[1] == "edit")
+			   	$scope.readTeacher();
 	}]);

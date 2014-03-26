@@ -3,16 +3,16 @@
 	<form align="center">
 	<input type="hidden" ng-model="id" />
 	
-<!-- 	<label for="firstName">First Name: </label> -->
+
 <div class="controls">
 	<input type="text"  placeholder="First Name" ng-model="firstName" /><br/>
-<!-- 	<label for="lastName">Last Name: </label> -->
+
 	<input type="text"  placeholder="Last Name" ng-model="lastName"/><br/>
-<!-- 	<label for="password">Password</label> -->
+
 	<input type="password"  placeholder="Password" ng-model="password" /> <br/>
-<!-- 	<label for="rollNo">Roll No</label> -->
+
 	<input type="text" placeholder="Roll No" ng-model="rollNo" /> <br/>
-<!-- 	<label for="department">Department</label> -->
+
 	<input type="text"  placeholder="E-Mail" ng-model="email" /> <br/>
 	</div>
 
@@ -23,13 +23,13 @@
 	</select> <br/>
 
 
-<!-- 	<label for="semester">Department</label> -->
+
 	<select   ng-model="semester">
 	<option value="">--Select Term--</option>
 	<option value="1">Term1</option>
 	<option value="2">Term2</option>
 	</select> <br/>
-<!-- 	<label for="section">Section</label> -->
+
 	<select    ng-model="section">
 	<option value="">---Select Section---</option>
 	<option value="1">A</option>
@@ -41,7 +41,7 @@
 	<input class="btn btn-primary" type="button" name="update" value="Update" ng-click="updateStudent()"/>
 	<input class="btn btn-primary" type="button" name="getStudentRecord"
 		value="Get Student Record" ng-click="readStudent()" />
-	<input class="btn btn-primary" type="button" name="delete" value="Delete" />
+	<input class="btn btn-primary" type="button" name="delete" value="Back"  ng-click="back()" />
 	<input class="btn btn-primary" type="button" name="list" value="List" />
 	</div>
 	</div>
