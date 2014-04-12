@@ -6,5 +6,10 @@
     	    		$location.path("/edit/"+$scope.email);
     	    		
     	    	};
+    	    	$scope.myTimetable = function() {
+    	    		console.log("Here..to test..");
+    	    		$window.location="TeacherTimeTable.html#/"+$scope.email;
+    	    		
+    	    	};
     	    	
     }]);

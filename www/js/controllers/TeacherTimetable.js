@@ -1,7 +1,7 @@
-myApp.controllers.controller('weekTimeTableCtrl', [ '$scope', '$window',
+myApp.controllers.controller('TeacherTimetableCtrl', [ '$scope', '$window',
 		'$http', '$routeParams', '$location',
 		function($scope, $window, $http, $routeParams, $location) {
-	
+
 			/*
 			 * console.log("In here..", $routeParams.deptt,
 			 * $routeParams.section, $routeParams.term); $scope.deptt =
@@ -15,58 +15,16 @@ myApp.controllers.controller('weekTimeTableCtrl', [ '$scope', '$window',
 				$scope.email = partsOfLocation[1];
 			}
 
-			var readStudent = function() {
-				$.ajax({
-					url : serverURL + '/provision',
-					dataType : 'JSONP',
-					data : {
-						action : 'read',
-						email : $scope.email
-					},
-					success : function(data) {
-						console.log("Read response: ", data);
-						if (data.status) {
-							$scope.firstName = data.student.firstName;
-							console.log($scope.firstName);
-							$scope.lastName = data.student.lastName;
-							$scope.rollNo = data.student.rollNo;
-							$scope.section = data.student.section;
-							$scope.semester = data.student.semester;
-							console.log($scope.semester);
-							$scope.department = data.student.department;
-							console.log($scope.department);
-							$scope.password = data.student.password;
-							$scope.id = data.student.id;
-							/*
-							 * this is the only change from student profile
-							 * controller here we are getting the list of
-							 * students based on the department section and
-							 * semester information retrieved from user profile
-							 */
-							$scope.timeTable();
-						} else {
-							alert("No data available");
-
-						}
-						$scope.$apply(function() {
-							$scope.status = data.status;
-							$scope.statusCode = data.status_code;
-							$scope.statusMessage = data.status_message;
-						});
-					}
-				});
-			};
-
+			
+						
 			$scope.timeTable = function() {
 				$.ajax({
 					url : serverURL + '/timetable',
 					dataType : 'jsonp',
 					data : {
-						'action' : 'getWeek',
-						'term' : $scope.semester,
-						'section' : $scope.section,
-						'department' : $scope.department
-
+						'action' : 'myTimetable',
+						'week' : $scope.week,
+						'userId':$scope.email
 					},
 					success : function(data) {
 						console.log(data);
@@ -85,9 +43,9 @@ myApp.controllers.controller('weekTimeTableCtrl', [ '$scope', '$window',
 				console.log("User notes changed", ov, nv);
 			});
 
-			console.log("EMail: ", $scope.email, typeof $scope.email);
+		/*	console.log("EMail: ", $scope.email, typeof $scope.email);
 			if(typeof $scope.email != 'undefined')
-		    readStudent();
+		    readStudent(); */
 
 		} ]);
 myApp.controllers.controller('ttRowCtrl', [ '$scope', '$window',

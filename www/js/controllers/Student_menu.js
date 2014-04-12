@@ -9,7 +9,7 @@
     	    	
     	    	$scope.getTimeTable = function() {
     	    		console.log("Here..to test..");
-    	    		$window.location="GetTimeTable.html";
+    	    		$window.location="GetTimeTable.html#/"+$scope.email;
     	    		
     	    	};
     	    	

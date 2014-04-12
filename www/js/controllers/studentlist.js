@@ -74,5 +74,7 @@ myApp.controllers.controller('StudentListCtrl', ['$scope', '$rootScope', '$windo
    		});
     };
     /* finally in this controller, lets invoke readStudent based on the email provided from path */
+	console.log("EMail: ", $scope.email, typeof $scope.email);
+	if(typeof $scope.email != 'undefined')
     readStudent();
    }]);
