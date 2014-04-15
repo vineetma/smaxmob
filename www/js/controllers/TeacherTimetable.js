@@ -17,7 +17,7 @@ myApp.controllers.controller('TeacherTimetableCtrl', [ '$scope', '$window',
 
 			
 						
-			$scope.timeTable = function() {
+			$scope.teachertimeTable = function() {
 				$.ajax({
 					url : serverURL + '/timetable',
 					dataType : 'jsonp',
@@ -27,14 +27,44 @@ myApp.controllers.controller('TeacherTimetableCtrl', [ '$scope', '$window',
 						'userId':$scope.email
 					},
 					success : function(data) {
-						console.log(data);
+						console.log(data, data.teacherTimetable);
 						$scope.$apply(function() {
 							$scope.status = data.status;
 							$scope.statusCode = data.status_code;
 							$scope.statusMessage = data.status_message;
-							if (data.status == true)
-								$scope.timeTable = data.timeSlots.timetable;
-							console.log($scope.timeTable);
+							
+							if (data.status == true){
+								$scope.timeTables = data.teacherTimetable.timeTables;
+								$scope.modTimeTable = [];
+								for(var i = 0; i < $scope.timeTables.length; i++){
+									var days = $scope.timeTables[i].timetable[0];
+									var to = $scope.timeTables[i].timetableObject;
+									var department = to.department;
+									var section = to.section;
+									var semester = to.semester;
+									for(var j=0; j < days.length; j++) {
+										var periods = days[j];
+										for (var k=0; k < periods.length; k++) {
+											var day = periods[k].day;
+											var number = periods[k].number;
+											var subjectTeacher = periods[k].subjectTeacher;
+											var room = periods[k].room;
+											var week = periods[k].week;
+											var tsId = periods[k].id;
+											console.log("Data", day, number, subjectTeacher, room, week, tsId);
+											if(typeof $scope.modTimeTable[day-1] == 'undefined') {
+												$scope.modTimeTable[day-1] = [];
+											} 
+											$scope.modTimeTable[day-1].push({'tsId': tsId, 'room': room, 'week': week, 
+													'day':day, 'number': number, 'subjectTeacher':subjectTeacher, 
+													'department':department, 'section':section, 
+													'semester': semester});										
+										}
+									}
+								}
+								console.log("Modified timetable", $scope.modTimeTable);
+								console.log("status is true", $scope.timeTable);
+							}
 						});
 					}
 				});
