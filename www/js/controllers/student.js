@@ -1,9 +1,11 @@
-myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', '$routeParams', function ($scope, $rootScope, $window, $location, $http, $routeParams) {
+myApp.controllers.controller
+    ('StudentCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', '$routeParams', 'Department',
+                   function ($scope, $rootScope, $window, $location, $http, $routeParams,Department) {
 	$scope.id = 0;
 	console.log("Email", $routeParams.email);
 	$scope.email = $routeParams.email;
 	
-	
+	$scope.departmentOptions=Department.getOptions();
 	
     $scope.$watch('firstName', function(ov, nv){
    	 console.log("FirstName updated:", ov, nv);
@@ -23,7 +25,7 @@ myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', 
 			 			'email' : $scope.email,
 			 			'section': $scope.section,
 			 			'semester' : $scope.semester,
-			 			'department' : $scope.department,
+			 			'department' : $scope.department.value,
 			 			'password': $scope.password,
 			 			'role':$scope.role
 			 		}
@@ -55,8 +57,8 @@ myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', 
    							$scope.rollNo = data.student.rollNo;
    							$scope.section = data.student.section;
    							$scope.semester = data.student.semester;
-   							console.log($scope.semester);
-   							$scope.department= data.student.department;
+   							console.log($scope.semester, data.student.department);
+   							$scope.department = $scope.departmentOptions[Department.getIndexByvalue(data.student.department)];
    							console.log($scope.department);
    							$scope.password = data.student.password;
    							$scope.id = data.student.id;
@@ -86,7 +88,7 @@ myApp.controllers.controller('StudentCtrl', ['$scope', '$rootScope', '$window', 
    				 			'email' : $scope.email,
    				 			'section': $scope.section,
    				 			'semester' : $scope.semester,
-   				 			'department' : $scope.department,
+   				 			'department' : $scope.department.value,
    				 			'password': $scope.password
    				 		}
    	    		    },

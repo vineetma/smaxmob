@@ -1,6 +1,8 @@
-myApp.controllers.controller('TeacherTimetableCtrl', [ '$scope', '$window',
-		'$http', '$routeParams', '$location',
-		function($scope, $window, $http, $routeParams, $location) {
+
+
+myApp.controllers.controller('TeacherTimetableCtrl', [ '$scope', '$window','Department',
+		'$http', '$routeParams', '$location','Section',
+		function($scope, $window, Department, $http, $routeParams, $location,Section) {
 
 			/*
 			 * console.log("In here..", $routeParams.deptt,
@@ -39,8 +41,11 @@ myApp.controllers.controller('TeacherTimetableCtrl', [ '$scope', '$window',
 								for(var i = 0; i < $scope.timeTables.length; i++){
 									var days = $scope.timeTables[i].timetable[0];
 									var to = $scope.timeTables[i].timetableObject;
-									var department = to.department;
-									var section = to.section;
+									//var department = to.department;
+									var department = Department.getOptions()[Department.getIndexByvalue(to.department)] ;
+									//var section = to.section;
+									var section = Section.getOptions()[Section.getIndexByvalue(to.section)];
+									
 									var semester = to.semester;
 									for(var j=0; j < days.length; j++) {
 										var periods = days[j];
@@ -63,7 +68,7 @@ myApp.controllers.controller('TeacherTimetableCtrl', [ '$scope', '$window',
 									}
 								}
 								console.log("Modified timetable", $scope.modTimeTable);
-								console.log("status is true", $scope.timeTable);
+								console.log("status is true", $scope.timeTables);
 							}
 						});
 					}
@@ -84,17 +89,24 @@ myApp.controllers.controller('ttRowCtrl', [ '$scope', '$window',
 }]);
 
 myApp.controllers.controller('ttCellCtrl', [ '$scope', '$window',
-                                    		'$http', '$routeParams', '$location',
-                                    		function($scope, $window, $http, $routeParams, $location) {
-	$scope.saveNotes = function(period) {
-		console.log("Notes: ", $scope.userNotes, $scope.day[period].id);
+                                    		'$http', '$routeParams', '$location','Department',
+                                    		function($scope, $window, $http, $routeParams, $location,Department) {
+	partsOfLocation = $location.path().split("/");
+	if (partsOfLocation.length > 1 && partsOfLocation[1] != '') {
+		$scope.hideSelection = true;
+		$scope.email = partsOfLocation[1];
+	}
+
+
+	$scope.saveNotes = function() {
+		console.log("Notes: ", $scope.userNotes, $scope.period.tsId);
 		$.ajax({
 			url : serverURL + '/note',
 			dataType : 'jsonp',
 			data : {
 				'action' : 'saveNotes',
 				'userId' : $scope.email,
-				'periodId': $scope.day[period].id,
+				'periodId': $scope.period.tsId,
 				'userNotes' : $scope.userNotes
 			},
 			success : function(data) {
@@ -103,20 +115,21 @@ myApp.controllers.controller('ttCellCtrl', [ '$scope', '$window',
 				
 				$scope.$apply(function() {
 					$scope.showTextBox=false;
+					$scope.readNotes();
 				});
 			}
 		});
 
 	};
-	$scope.readNotes = function(period) {
-		console.log("Notes: ", $scope.userNotes, $scope.day[period].id);
+	$scope.readNotes = function() {
+		console.log("Notes: ", $scope.userNotes, $scope.period.tsId);
 		$.ajax({
 			url : serverURL + '/note',
 			dataType : 'jsonp',
 			data : {
 				'action' : 'readNotes',
 				'userId' : $scope.email,
-				'periodId': $scope.day[period].id
+				'periodId': $scope.period.tsId
 				
 			},
 			success : function(data) {

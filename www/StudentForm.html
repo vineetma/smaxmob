@@ -16,15 +16,23 @@
 	<input type="text"  placeholder="E-Mail" ng-model="email" /> <br/>
 	</div>
 
-	<select   ng-model="department">
+  <select ng-model="department" ng-options="d.name for d in departmentOptions">
+	<option>---select department---</option>
+
+	 </select>
+	 <br/>
+	 
+	 
+	 
+     <!--<select   ng-model="department" >
 	<option value="">--Select Department--</option>
 	<option value="1">Electronics</option>
 	<option value="2">Others</option>
-	</select> <br/>
+	</select> <br/>-->
 
 
 
-	<select   ng-model="semester">
+	<select   ng-model="semester" >
 	<option value="">--Select Term--</option>
 	<option value="1">Term1</option>
 	<option value="2">Term2</option>

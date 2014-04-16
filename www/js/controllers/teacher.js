@@ -1,7 +1,9 @@
-myApp.controllers.controller('TeacherCtrl', ['$scope', '$rootScope', '$window', '$location', '$http','$routeParams', function ($scope, $rootScope, $window, $location, $http,$routeParams) {
+myApp.controllers.controller('TeacherCtrl', ['$scope', '$rootScope', '$window', '$location', '$http','$routeParams',
+                'Department',function ($scope, $rootScope, $window, $location, $http,$routeParams,Department) {
 	$scope.id = 0;
 	console.log("Email", $routeParams.email);
 	$scope.email = $routeParams.email;
+	$scope.departmentOptions=Department.getOptions();
 	 $scope.$watch('firstName', function(ov, nv){
 		 console.log("FirstName updated:", ov, nv);
 		 console.log("First: ", $scope.firstName);
@@ -19,7 +21,7 @@ myApp.controllers.controller('TeacherCtrl', ['$scope', '$rootScope', '$window', 
 			 			'lastName': $scope.lastName,
 			 			'email' : $scope.email,
 			 			'teacherId':$scope.teacherId,
-			 			'department' : $scope.department,
+			 			'department' : $scope.department.value,
 			 			'password': $scope.password,
 			 			'role':$scope.role
 			 		}
@@ -49,7 +51,8 @@ myApp.controllers.controller('TeacherCtrl', ['$scope', '$rootScope', '$window', 
 								$scope.lastName = data.teacher.lastName;
 								
 								$scope.teacherId =data.teacher.teacherId,
-								$scope.department= data.teacher.department;
+								$scope.department = $scope.departmentOptions[Department.getIndexByvalue(data.teacher.department)];
+								//$scope.department= data.teacher.department;
 								$scope.password = data.teacher.password;
 								$scope.id = data.teacher.id;
 							} else {
@@ -76,7 +79,7 @@ myApp.controllers.controller('TeacherCtrl', ['$scope', '$rootScope', '$window', 
 					 			'firstName':$scope.firstName,
 					 			'lastName': $scope.lastName,
 					 			'email' : $scope.email,	
-					 			'department' : $scope.department,
+					 		    'department' : $scope.department.value,
 					 			'password': $scope.password
 					 		}
 		    		    },

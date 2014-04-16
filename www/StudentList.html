@@ -20,6 +20,7 @@
 <script src="lib/angular-route.js"></script>
 <script src="js/app.js"></script>
 <script src="js/controllers.js"></script>
+  <script src="js/Services.js"></script>
 <script src="js/controllers/studentlist.js"></script>
 <!--    <script src="../../js/memory-services.js"></script>-->
 <script src="js/rest-services.js"></script>
@@ -30,11 +31,15 @@
 
 <form>
 
-<select ng-model="department">
+<select ng-model="department" ng-options="d.name for d in departmentOptions">
+	<option>---select department---</option>
+
+	 </select><br />
+<!--  <select ng-model="department">
 	<option value="">--Select Department--</option>
 	<option value="1">Electronics</option>
 	<option value="2">Others</option>
-</select> <br />
+</select> -->
 
 <select ng-model="semester">
 	<option value="">--Select Semester--</option>

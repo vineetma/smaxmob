@@ -1,4 +1,6 @@
-myApp.controllers.controller('StudentListCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', function ($scope, $rootScope, $window, $location, $http) {
+myApp.controllers.controller('StudentListCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', 
+         'Department',function ($scope, $rootScope, $window, $location, $http, Department) {
+	$scope.departmentOptions=Department.getOptions();
 	$scope.id = 0;
 	/* want to hide the form for selection of students from various classes */
     $scope.hideSelection = false;
@@ -28,7 +30,7 @@ myApp.controllers.controller('StudentListCtrl', ['$scope', '$rootScope', '$windo
    							$scope.section = data.student.section;
    							$scope.semester = data.student.semester;
    							console.log($scope.semester);
-   							$scope.department= data.student.department;
+   							$scope.department = $scope.departmentOptions[Department.getIndexByvalue(data.student.department)];
    							console.log($scope.department);
    							$scope.password = data.student.password;
    							$scope.id = data.student.id;
@@ -57,7 +59,7 @@ myApp.controllers.controller('StudentListCtrl', ['$scope', '$rootScope', '$windo
    		    dataType: 'jsonp',
    		    data: {'action':'list',
 		 		    'studentList':{
-		 		    	'department' : $scope.department,
+		 		    	'department' : $scope.department.value,
 			 			'semester' : $scope.semester,
 			 			'section': $scope.section
    	}
