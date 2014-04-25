@@ -20,6 +20,7 @@
 <script src="lib/angular-route.js"></script>
 <script src="js/app.js"></script>
 <script src="js/controllers.js"></script>
+  <script src="js/Services.js"></script>
 <script src="js/controllers/weekTimeTable.js"></script>
 <!--    <script src="../../js/memory-services.js"></script>-->
 <script src="js/rest-services.js"></script>
@@ -29,13 +30,30 @@
 <h1 align="center">NewTimetable Form</h1>
 <br>
 <br>
-<form align="center"><input type="hidden" ng-model="id" /> <select
+<form align="center"><input type="hidden" ng-model="id" />
+ <select ng-model="department" ng-options="d.name for d in departmentOptions">
+	<option value="">---select department---</option>
+
+	 </select>
+	 <br/>
+	  <select ng-model="semester" ng-options="sm.name for sm in semesterOptions">
+	<option value="">---select Semester---</option>
+
+	 </select>
+	 <br/>
+	 
+	  <select ng-model="section" ng-options="s.name for s in sectionOptions">
+	<option value="">---select section---</option>
+
+	 </select>
+	 <br/>
+ <!--<select
 	ng-model="department">
 	<option value="">--Select Department--</option>
 	<option value="1">Electronics</option>
 	<option value="2">Others</option>
-</select> <br>
-<br>
+</select>
+
 
 <select ng-model="semester">
 	<option value="">--Select Term--</option>
@@ -44,11 +62,11 @@
 </select> <br>
 <br>
 
-<select ng-model="section">
+<!--<select ng-model="section">
 	<option value="">---Select Section---</option>
 	<option value="1">A</option>
 	<option value="2">B</option>
-</select> <br>
+</select> --><br>
 <br>
 
 <input class="btn btn-primary" type="button" name="create"

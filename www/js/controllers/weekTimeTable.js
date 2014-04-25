@@ -1,14 +1,9 @@
 myApp.controllers.controller('weekTimeTableCtrl', [ '$scope', '$window',
-		'$http', '$routeParams', '$location',
-		function($scope, $window, $http, $routeParams, $location) {
-	
-			/*
-			 * console.log("In here..", $routeParams.deptt,
-			 * $routeParams.section, $routeParams.term); $scope.deptt =
-			 * $routeParams.deptt; $scope.section = $routeParams.section;
-			 * $scope.term = $routeParams.term;
-			 */
-
+		'$http', '$routeParams', '$location','Department','Section','Semester',
+		function($scope, $window, $http, $routeParams, $location,Department,Section,Semester) {
+	$scope.departmentOptions=Department.getOptions();
+	$scope.sectionOptions=Section.getOptions();
+	$scope.semesterOptions=Semester.getOptions();		
 			partsOfLocation = $location.path().split("/");
 			if (partsOfLocation.length > 1 && partsOfLocation[1] != '') {
 				$scope.hideSelection = true;
@@ -30,10 +25,14 @@ myApp.controllers.controller('weekTimeTableCtrl', [ '$scope', '$window',
 							console.log($scope.firstName);
 							$scope.lastName = data.student.lastName;
 							$scope.rollNo = data.student.rollNo;
-							$scope.section = data.student.section;
-							$scope.semester = data.student.semester;
+						//	$scope.section = data.student.section;
+							$scope.section = 	$scope.sectionOptions[Section.getIndexByvalue(data.student.section)];
+   					         console.log($scope.semester, data.student.department);
+   							$scope.department = $scope.departmentOptions[Department.getIndexByvalue(data.student.department)];
+						//	$scope.semester = data.student.semester;
+							$scope.semester = $scope.semesterOptions[Semester.getIndexByvalue(data.student.semester)];
 							console.log($scope.semester);
-							$scope.department = data.student.department;
+						//$scope.department = data.student.department;
 							console.log($scope.department);
 							$scope.password = data.student.password;
 							$scope.id = data.student.id;
@@ -63,9 +62,9 @@ myApp.controllers.controller('weekTimeTableCtrl', [ '$scope', '$window',
 					dataType : 'jsonp',
 					data : {
 						'action' : 'getWeek',
-						'term' : $scope.semester,
-						'section' : $scope.section,
-						'department' : $scope.department
+						'term' : $scope.semester.value,
+						'section' : $scope.section.value,
+						'department' : $scope.department.value
 
 					},
 					success : function(data) {

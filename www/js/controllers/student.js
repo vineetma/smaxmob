@@ -1,16 +1,15 @@
 myApp.controllers.controller
     ('StudentCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', '$routeParams', 'Department',
-                   function ($scope, $rootScope, $window, $location, $http, $routeParams,Department) {
+                     'Section','Semester', function 
+                     ($scope, $rootScope, $window, $location, $http, $routeParams,Department,Section,Semester) {
 	$scope.id = 0;
 	console.log("Email", $routeParams.email);
 	$scope.email = $routeParams.email;
 	
 	$scope.departmentOptions=Department.getOptions();
-	
-    $scope.$watch('firstName', function(ov, nv){
-   	 console.log("FirstName updated:", ov, nv);
-   	 console.log("First: ", $scope.firstName);
-    });
+	$scope.sectionOptions=Section.getOptions();
+	$scope.semesterOptions=Semester.getOptions();
+   
     $scope.createStudent = function() {
 //var emp = Employee.readAll({employeeId: 223});
    	 console.log("Testing student creation..", $scope.firstName, $scope.lastName);
@@ -23,8 +22,8 @@ myApp.controllers.controller
 			 			'firstName':$scope.firstName,
 			 			'lastName': $scope.lastName,
 			 			'email' : $scope.email,
-			 			'section': $scope.section,
-			 			'semester' : $scope.semester,
+			 			'section': $scope.section.value,
+			 			'semester' : $scope.semester.value,
 			 			'department' : $scope.department.value,
 			 			'password': $scope.password,
 			 			'role':$scope.role
@@ -55,8 +54,10 @@ myApp.controllers.controller
    							console.log($scope.firstName);
    							$scope.lastName = data.student.lastName;
    							$scope.rollNo = data.student.rollNo;
-   							$scope.section = data.student.section;
-   							$scope.semester = data.student.semester;
+   						//	$scope.section = data.student.section;
+   							$scope.section = 	$scope.sectionOptions[Section.getIndexByvalue(data.student.section)];
+   							$scope.semesterOptions[Semester.getIndexByvalue(data.student.semester)];
+   						//	$scope.semester = data.student.semester;
    							console.log($scope.semester, data.student.department);
    							$scope.department = $scope.departmentOptions[Department.getIndexByvalue(data.student.department)];
    							console.log($scope.department);
@@ -86,8 +87,8 @@ myApp.controllers.controller
    				 			'firstName':$scope.firstName,
    				 			'lastName': $scope.lastName,
    				 			'email' : $scope.email,
-   				 			'section': $scope.section,
-   				 			'semester' : $scope.semester,
+   				 			'section': $scope.section.value,
+   				 			'semester' : $scope.semester.value,
    				 			'department' : $scope.department.value,
    				 			'password': $scope.password
    				 		}

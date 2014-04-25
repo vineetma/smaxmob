@@ -1,6 +1,8 @@
 myApp.controllers.controller('StudentListCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', 
-         'Department',function ($scope, $rootScope, $window, $location, $http, Department) {
+         'Department','Section','Semester',function ($scope, $rootScope, $window, $location, $http, Department,Section,Semester) {
 	$scope.departmentOptions=Department.getOptions();
+	$scope.sectionOptions=Section.getOptions();
+	$scope.semesterOptions=Semester.getOptions();
 	$scope.id = 0;
 	/* want to hide the form for selection of students from various classes */
     $scope.hideSelection = false;
@@ -27,8 +29,10 @@ myApp.controllers.controller('StudentListCtrl', ['$scope', '$rootScope', '$windo
    							console.log($scope.firstName);
    							$scope.lastName = data.student.lastName;
    							$scope.rollNo = data.student.rollNo;
-   							$scope.section = data.student.section;
-   							$scope.semester = data.student.semester;
+   							//$scope.section = data.student.section;
+   							$scope.section = 	$scope.sectionOptions[Section.getIndexByvalue(data.student.section)];
+   							//$scope.semester = data.student.semester;
+   							$scope.semester = 	$scope.semesterOptions[Semester.getIndexByvalue(data.student.semester)];
    							console.log($scope.semester);
    							$scope.department = $scope.departmentOptions[Department.getIndexByvalue(data.student.department)];
    							console.log($scope.department);
@@ -60,8 +64,8 @@ myApp.controllers.controller('StudentListCtrl', ['$scope', '$rootScope', '$windo
    		    data: {'action':'list',
 		 		    'studentList':{
 		 		    	'department' : $scope.department.value,
-			 			'semester' : $scope.semester,
-			 			'section': $scope.section
+			 			'semester' : $scope.semester.value,
+			 			'section': $scope.section.value
    	}
    		    },
    		    success: function(data) {

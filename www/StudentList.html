@@ -32,14 +32,25 @@
 <form>
 
 <select ng-model="department" ng-options="d.name for d in departmentOptions">
-	<option>---select department---</option>
+	<option value="">---select department---</option>
 
 	 </select><br />
+	 
+	   <select ng-model="semester" ng-options="sm.name for sm in semesterOptions">
+	<option value="">---select Semester---</option>
+
+	 </select>
+	 <br/>
+	 <select ng-model="section" ng-options="s.name for s in sectionOptions">
+	<option value="">---select sections---</option>
+
+	 </select>
+	 <br/>
 <!--  <select ng-model="department">
 	<option value="">--Select Department--</option>
 	<option value="1">Electronics</option>
 	<option value="2">Others</option>
-</select> -->
+</select> 
 
 <select ng-model="semester">
 	<option value="">--Select Semester--</option>
@@ -47,11 +58,12 @@
 	<option value="2">2</option>
 </select> <br />
 
-<select ng-model="section">
+  
+<!--<select ng-model="section">
 	<option value="">--Select Section--</option>
 	<option value="1">A</option>
 	<option value="2">B</option>
-</select> <br />
+</select> <br />-->
 
  <input class="btn btn-primary" type="button" name="getstudentlist" value="Get Student List" ng-click="getstudentlist()" />
  
