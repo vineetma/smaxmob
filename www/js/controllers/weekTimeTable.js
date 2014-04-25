@@ -1,5 +1,6 @@
-myApp.controllers.controller('weekTimeTableCtrl', [ '$scope', '$window',
-		'$http', '$routeParams', '$location','Department','Section','Semester',
+myApp.controller('weekTimeTableCtrl', [ '$scope', '$window',
+		'$http', '$routeParams', '$location','Department',
+		'Section','Semester',
 		function($scope, $window, $http, $routeParams, $location,Department,Section,Semester) {
 	$scope.departmentOptions=Department.getOptions();
 	$scope.sectionOptions=Section.getOptions();
@@ -7,9 +8,9 @@ myApp.controllers.controller('weekTimeTableCtrl', [ '$scope', '$window',
 			partsOfLocation = $location.path().split("/");
 			if (partsOfLocation.length > 1 && partsOfLocation[1] != '') {
 				$scope.hideSelection = true;
-				$scope.email = partsOfLocation[1];
+				$scope.email = partsOfLocation[2];
 			}
-
+			$scope.email = $routeParams.email;
 			var readStudent = function() {
 				$.ajax({
 					url : serverURL + '/provision',
@@ -89,12 +90,12 @@ myApp.controllers.controller('weekTimeTableCtrl', [ '$scope', '$window',
 		    readStudent();
 
 		} ]);
-myApp.controllers.controller('ttRowCtrl', [ '$scope', '$window',
+myApp.controller('ttRowCtrl', [ '$scope', '$window',
                                             		'$http', '$routeParams', '$location',
                                             		function($scope, $window, $http, $routeParams, $location) {
 }]);
 
-myApp.controllers.controller('ttCellCtrl', [ '$scope', '$window',
+myApp.controller('ttCellCtrl', [ '$scope', '$window',
                                     		'$http', '$routeParams', '$location',
                                     		function($scope, $window, $http, $routeParams, $location) {
 	$scope.saveNotes = function(period) {
@@ -139,10 +140,6 @@ myApp.controllers.controller('ttCellCtrl', [ '$scope', '$window',
 					$scope.status = data.status;
 				 		$scope.statusCode = data.status_code;
 				 		$scope.statusMessage = data.status_message;
-				 		
-				 			
-				 			
-				 		
 				});
 			}
 		});

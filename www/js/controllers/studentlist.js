@@ -1,5 +1,9 @@
-myApp.controllers.controller('StudentListCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', 
+myApp.controller('studentlistCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', 
          'Department','Section','Semester',function ($scope, $rootScope, $window, $location, $http, Department,Section,Semester) {
+	if($location.path() == '/logout') {
+		$window.location = baseURL;
+	}
+	$scope.main.title = "List of students";
 	$scope.departmentOptions=Department.getOptions();
 	$scope.sectionOptions=Section.getOptions();
 	$scope.semesterOptions=Semester.getOptions();
@@ -9,9 +13,10 @@ myApp.controllers.controller('StudentListCtrl', ['$scope', '$rootScope', '$windo
     /* also get the email from the url */
     console.log($location.path().split("/"));
     partsOfLocation = $location.path().split("/");
-    if(partsOfLocation.length > 1 && partsOfLocation[1] != '') {
+    if(partsOfLocation.length > 1 && partsOfLocation[2] != '') {
     	$scope.hideSelection = true;
-    	$scope.email = partsOfLocation[1];
+    	$scope.email = partsOfLocation[2];
+    	console.log("EMail for list: ", $scope.email, partsOfLocation);
     }
 
 /* reused readStudent from the profile function of the student form */

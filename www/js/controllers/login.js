@@ -1,5 +1,7 @@
-    myApp.controllers.controller('loginCtrl', ['$scope', '$window', '$http', function ($scope, $window, $http) {
+    myApp.controller('loginCtrl', ['$scope', '$window', '$http', function ($scope, $window, $http) {
     	console.log("In here..");
+    	 $scope.main.menuItems = [{'url':'/', 'text':'Home'}];
+    	 $scope.main.title = "Login";
     	    	$scope.login = function() {
        		$.ajax({
        		    url:serverURL+'/login',
@@ -21,13 +23,13 @@
    	   				 		console.log($scope.user_role);
    				 			if($scope.user_role == 1) {
    				 				console.log("Compared...");
-   				 				$window.location="admin_menu.html#/admin/";
+   				 				$window.location="admin.html";
    				 			}else if($scope.user_role == 2){
-   				 				$window.location ="student_menu.html#/navigation/"+$scope.userEmail;
+   				 				$window.location ="student.html#/timetable/"+$scope.userEmail;
    				 			//	console.log("email",$scope.userEmail);
    				 			}else if($scope.user_role == 3){
    				 			// console.log("email",$scope.userEmail);
-   				 				$window.location ="teacher_menu.html#/navigation/"+$scope.userEmail;
+   				 				$window.location ="teacher.html#/timetable/"+$scope.userEmail;
    				 			
    				 		}
    				 		}

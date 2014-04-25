@@ -1,0 +1,34 @@
+<form>
+
+<select ng-model="department" ng-options="d.name for d in departmentOptions">
+	<option value="">---select department---</option>
+
+	 </select><br />
+	 
+	   <select ng-model="semester" ng-options="sm.name for sm in semesterOptions">
+	<option value="">---select Semester---</option>
+
+	 </select>
+	 <br/>
+	 <select ng-model="section" ng-options="s.name for s in sectionOptions">
+	<option value="">---select sections---</option>
+
+	 </select>
+	 <br/>
+
+
+ <input class="btn btn-primary" type="button" name="getstudentlist" value="Get Student List" ng-click="getstudentlist()" />
+ 
+	</form>
+
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Roll no</th><th>First name</th><th>Last Name</th><th>Call/SMS/EMail</th></tr>
+</thead>
+<tbody>
+<tr ng-repeat="s in studentList">
+<td>{{s.rollNo}}</td><td>{{s.firstName}}</td><td>{{s.lastName}}</td><td></td>
+</tr>
+</tbody>
+</table>

@@ -1,6 +1,7 @@
-myApp.controllers.controller('TeacherCtrl', ['$scope', '$rootScope', '$window', '$location', '$http','$routeParams',
+myApp.controller('teacherProfileCtrl', ['$scope', '$rootScope', '$window', '$location', '$http','$routeParams',
                 'Department',function ($scope, $rootScope, $window, $location, $http,$routeParams,Department) {
 	$scope.id = 0;
+	$scope.main.title = 'New Teacher';
 	console.log("Email", $routeParams.email);
 	$scope.email = $routeParams.email;
 	$scope.departmentOptions=Department.getOptions();

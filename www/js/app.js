@@ -1,10 +1,10 @@
 'use strict';
 
-var myApp = angular.module('myApp', [
+var myApp = angular.module('myapp', [
 //    'ngTouch',
-    'ngRoute',
+    'ngRoute'//,
 //    'ngAnimate',
-    'myApp.controllers',
+//    'myApp.controllers',
 //    'myApp.memoryServices'
-    'myApp.restServices'
+//    'myApp.restServices'
 ]);
