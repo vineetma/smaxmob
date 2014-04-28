@@ -101,6 +101,7 @@ myApp.controller('teacherProfileCtrl', ['$scope', '$rootScope', '$window', '$loc
 							}
 						}});
 			};
-			if($location.path().split("/")[1] == "edit")
+			console.log('Parts: ', $location.path().split("/"));
+			if($location.path().split("/")[3] == "edit")
 			   	$scope.readTeacher();
 	}]);

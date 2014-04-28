@@ -1,6 +1,7 @@
 myApp.controller('studentlistCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', 
-         'Department','Section','Semester',function ($scope, $rootScope, $window, $location, $http, Department,Section,Semester) {
-	if($location.path() == '/logout') {
+         'Department','Section','Semester',
+         function ($scope, $rootScope, $window, $location, $http, Department,Section,Semester) {
+	if($location.path().split('/')[1] == 'logout') {
 		$window.location = baseURL;
 	}
 	$scope.main.title = "List of students";
@@ -85,7 +86,7 @@ myApp.controller('studentlistCtrl', ['$scope', '$rootScope', '$window', '$locati
    		});
     };
     /* finally in this controller, lets invoke readStudent based on the email provided from path */
-	console.log("EMail: ", $scope.email, typeof $scope.email);
+	/*console.log("EMail: ", $scope.email, typeof $scope.email);
 	if(typeof $scope.email != 'undefined')
-    readStudent();
-   }]);
+    readStudent();*/
+   }]); 
