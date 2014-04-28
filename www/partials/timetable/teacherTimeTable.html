@@ -1,0 +1,65 @@
+<form align="center"><input type="hidden" ng-model="id" /> <select
+	ng-model="week">
+	<option value="">--Select Week--</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+</select> <br>
+<br>
+
+
+
+<input class="btn btn-primary" type="button" name="create"
+	ng-click="teachertimeTable()" value="GO" /></form>
+Data Entered by you:
+<br />
+Response: {{status}}: {{statusCode}}, {{statusMessage}}
+<div class="row show-grid hidden-xs">
+<div class="col-xs-12 col-md-1">Day</div>
+<div class="col-xs-offset-1 col-md-offset-0 col-xs-8 col-md-1">P1</div>
+<div class="col-xs-offset-1 col-md-offset-0 col-xs-8 col-md-1">P2</div>
+<div class="col-xs-offset-1 col-md-offset-0 col-xs-8 col-md-1">P3</div>
+<div class="col-xs-offset-1 col-md-offset-0 col-xs-8 col-md-1">P4</div>
+<div class="col-xs-offset-1 col-md-offset-0 col-xs-8 col-md-1">P5</div>
+<div class="col-xs-offset-1 col-md-offset-0 col-xs-8 col-md-1">P6</div>
+
+</div>
+<div class="row  show-grid" ng-repeat="day in modTimeTable"  >
+<div class="col-xs-12  col-md-1">Day #{{day[0].day}}</div><br/>
+<div class="show-grid col-xs-offset-1" ng-repeat="period in day" ng-controller='ttCellCtrl'  >
+<div>Period:{{period.number}}, Room:{{period.room}}, Department: {{period.department.name}}, Section:{{period.section.name}},
+	Semester:{{period.semester}}, Subject:{{period.subjectTeacher.subject.name}}
+	
+	<textarea class="col-md-12"
+			ng-show="showTextBox" row="4" column="6" ng-model="userNotes">
+		</textarea>
+		<br/>
+		<button ng-click="saveNotes()" ng-show="showTextBox" 
+			type="button" class="btn btn-default btn-xs"><span
+			class="glyphicon-ok"></span>S
+		</button>
+		<button type="button" class="btn btn-default btn-xs"
+			ng-hide="showTextBox" ng-click="showTextBox=true"><span
+			class="glyphicon-pencil"></span>E
+		</button>
+		<button type="button" class="btn btn-default btn-xs"
+			ng-show="showTextBox" ng-click="showTextBox=false"><span
+			class="glyphicon-pencil"></span>C
+		</button>
+		
+		<div ng-show="showNotes">
+		<div ng-repeat="n in notes.notes">
+		<span style="font-size: 8px; font-style: italic;">{{n.stn_dt}}, {{n.userNotes}}</span>
+		</div>
+		{{notes.userNotes}}
+		</div>
+		<button ng-click="readNotes()" ng-hide="showNotes || showTextBox" 
+			type="button" class="btn btn-default btn-xs"><span
+			class="glyphicon-ok"></span>R
+		</button>
+		<button ng-show="showNotes" ng-click="showNotes=false"type="button" class="btn btn-default btn-xs"><span
+			class="glyphicon-ok">H</span>
+		</button>
+	</div>
+<br/>
+</div>
+</div>
