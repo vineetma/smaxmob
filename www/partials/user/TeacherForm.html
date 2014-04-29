@@ -1,37 +1,27 @@
 
-<form align="center">
-
-<input type="hidden" ng-model="id" />
-<div class="controls">
- <!--<label for="firstName">First Name: </label> -->
-<input type="text"  placeholder="First Name"ng-model="firstName" /><br />
-<!--<label for="lastName">Last Name: </label> -->
- <input type="text" placeholder="Last Name" ng-model="lastName" /><br />
-<!--<label for="password">Password</label> -->                 
-<input type="password" placeholder="Password" ng-model="password" />
-<br />
-<input type ="text"  placeholder="Teacher-Id" ng-model="teacherId"/>
-<br />
-<input type="text"  placeholder="E-Mail"ng-model="email" /> <br />
+<form align="center"><input type="hidden" ng-model="id" />
+<div class="controls"><!--<label for="firstName">First Name: </label> -->
+<input type="text" placeholder="First Name" ng-model="firstName" /><br />
+<!--<label for="lastName">Last Name: </label> --> <input type="text"
+	placeholder="Last Name" ng-model="lastName" /><br />
+<!--<label for="password">Password</label> --> <input type="password"
+	placeholder="Password" ng-model="password" /> <br />
+<input type="text" placeholder="Teacher-Id" ng-model="teacherId" /> <br />
+<input type="text" placeholder="E-Mail" ng-model="email" /> <br />
 </div>
- <select ng-model="department" ng-options="d.name for d in departmentOptions">
+<select ng-model="department"
+	ng-options="d.name for d in departmentOptions">
 	<option value="">---select department---</option>
 
-	 </select>
-<!--  <select   ng-model="department">
-	<option value="">--Select Department--</option>
-	<option value="1">Electronics</option>
-	<option value="2">Others</option>
-</select> --><br />
+</select><br />
 
 <div class="control-group">
-    <div class="controls">
-<input type="button" name="create" ng-click="createTeacher()"value="Create" class="btn btn-primary" />
- <input type="button" name="update" value="Update"ng-click="updateTeacher()" class="btn btn-primary"/>
-
-  </div>
-  </div>
-	</form>
+<div class="controls"><input type="button" name="create"
+	ng-click="createTeacher()" value="Create" class="btn btn-primary"
+	ng-hide="hideSelection" /> <input type="button" name="update"
+	value="Update" ng-click="updateTeacher()" class="btn btn-primary" /></div>
+</div>
+</form>
 
 Data Entered by you:
 <br />

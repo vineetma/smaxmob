@@ -1,63 +1,44 @@
 
-	<form align="center">
-	<input type="hidden" ng-model="id" />
-	
+<form align="center"><input type="hidden" ng-model="id" />
 
-<div class="controls">
-	<input type="text"  placeholder="First Name" ng-model="firstName" /><br/>
 
-	<input type="text"  placeholder="Last Name" ng-model="lastName"/><br/>
+<div class="controls"><input type="text" placeholder="First Name"
+	ng-model="firstName" /><br />
 
-	<input type="password"  placeholder="Password" ng-model="password" /> <br/>
+<input type="text" placeholder="Last Name" ng-model="lastName" /><br />
 
-	<input type="text" placeholder="Roll No" ng-model="rollNo" /> <br/>
+<input type="password" placeholder="Password" ng-model="password" /> <br />
 
-	<input type="text"  placeholder="E-Mail" ng-model="email" /> <br/>
-	</div>
+<input type="text" placeholder="Roll No" ng-model="rollNo" /> <br />
 
-  <select ng-model="department" ng-options="d.name for d in departmentOptions">
+<input type="text" placeholder="E-Mail" ng-model="email" /> <br />
+</div>
+
+<select ng-model="department"
+	ng-options="d.name for d in departmentOptions">
 	<option value="">---select department---</option>
 
-	 </select>
-	 <br/>
-	 
-	  <select ng-model="section" ng-options="s.name for s in sectionOptions">
+</select> <br />
+
+<select ng-model="section" ng-options="s.name for s in sectionOptions">
 	<option value="">---select section---</option>
 
-	 </select>
-	 <br/>
-	  <select ng-model="semester" ng-options="sm.name for sm in semesterOptions">
+</select> <br />
+<select ng-model="semester"
+	ng-options="sm.name for sm in semesterOptions">
 	<option value="">---select Semester---</option>
 
-	 </select>
-	 <br/>
-	 
-     <!--<select   ng-model="department" >
-	<option value="">--Select Department--</option>
-	<option value="1">Electronics</option>
-	<option value="2">Others</option>
-	</select> <br/>
+</select> <br />
 
 
-
-	 <select   ng-model="semester" >
-	<option value="">--Select Term--</option>
-	<option value="1">Term1</option>
-	<option value="2">Term2</option>
-	</select> <br/>
-
-     <select    ng-model="section">
-	<option value="">---Select Section---</option>
-	<option value="1">A</option>
-	<option value="2">B</option>
-	</select> <br/> -->
-	<div class="control-group">
-    <div class="controls">
-	<input  class="btn btn-primary" type="button" name="create" ng-click="createStudent()" value="Create" />
-	<input class="btn btn-primary" type="button" name="update" value="Update" ng-click="updateStudent()"/>
-	
-	</div>
-	</div>
-	</form>
-	Data Entered by you: <br/>
-	Response: {{status}}: {{statusCode}}, {{statusMessage}}
+<div class="control-group">
+<div class="controls">
+    <input class="btn btn-primary" type="button"
+	name="create" ng-click="createStudent()" value="Create" ng-hide="hideSelection"/> 
+	<input class="btn btn-primary" type="button" name="update" value="Update"
+	ng-click="updateStudent()" /></div>
+</div>
+</form>
+Data Entered by you:
+<br />
+Response: {{status}}: {{statusCode}}, {{statusMessage}}

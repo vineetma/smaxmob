@@ -3,15 +3,21 @@
 
 </table>
 <table border='1' cellspacing='0'>
-<thead>
-<tr>
-<th>Roll no</th><th>First name</th><th>Last Name</th><th>Call/SMS/EMail</th></tr>
-</thead>
-<tbody>
-<tr ng-repeat="daySlots in days">
-	<td>{{daySlot.dayNo}}</td>
-	<td>{{daySlots[0].daySubjectTeacher.subject}} <br/>{{daySlots[0].daySubjectTeacher.teacher}}</td>
-	<td>{{daySlots[1].daySubjectTeacher.subject}} <br/>{{daySlots[1].daySubjectTeacher.teacher}}</td>
-</tr>
-</tbody>
+	<thead>
+		<tr>
+			<th>Roll no</th>
+			<th>First name</th>
+			<th>Last Name</th>
+			<th>Call/SMS/EMail</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="daySlots in days">
+			<td>{{daySlot.dayNo}}</td>
+			<td>{{daySlots[0].daySubjectTeacher.subject}} <br />
+			{{daySlots[0].daySubjectTeacher.teacher}}</td>
+			<td>{{daySlots[1].daySubjectTeacher.subject}} <br />
+			{{daySlots[1].daySubjectTeacher.teacher}}</td>
+		</tr>
+	</tbody>
 </table>
