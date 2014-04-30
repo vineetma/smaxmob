@@ -58,7 +58,7 @@ myApp
 													 * retrieved from user
 													 * profile
 													 */
-													$scope.timeTable();
+													$scope.getTimeTable();
 												} else {
 													alert("No data available");
 
@@ -73,7 +73,7 @@ myApp
 										});
 							};
 
-							$scope.timeTable = function() {
+							$scope.getTimeTable = function() {
 								$
 										.ajax({
 											url : serverURL + '/timetable',
@@ -92,10 +92,17 @@ myApp
 															$scope.status = data.status;
 															$scope.statusCode = data.status_code;
 															$scope.statusMessage = data.status_message;
-															if (data.status == true)
+															if (data.status == true) {
 																$scope.timeTable = data.timeSlots.timetable;
-															console
-																	.log($scope.timeTable);
+																$scope.timeTableObject = data.timeSlots.timetableObject;
+																for(var d = 0; d < $scope.timeTable[0].length; d++) {
+																		day = $scope.timeTable[0][d][0].day;
+																		dt = new Date(data.timeSlots.timetableObject.startDate);
+																		dt.setDate(dt.getDate()+day-1);
+																		$scope.timeTable[0][d].date = dt.toDateString();
+																}
+															}
+															console.log($scope.timeTable);
 														});
 											}
 										});

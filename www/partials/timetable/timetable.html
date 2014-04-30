@@ -23,13 +23,14 @@
 
 <div class="row  show-grid" ng-repeat="day in timeTable[0]"
 	ng-controller='ttRowCtrl'>
-<div class="col-xs-12  col-md-1">Day #{{day[0].day}}</div>
+<div class="col-xs-12  col-md-1">Day #{{day[0].day}}<br/>{{day.date}}</div>
 
 
 <!-- p1-->
 <div ng-controller='ttCellCtrl' class="col-xs-12">
-<div class="hidden-md hidden-lg hidden-sm col-xs-1 col-xs-offset-1">P1</div>
+<div class="hidden-md hidden-lg hidden-sm col-xs-1 col-xs-offset-1">P12</div>
 <div class="col-xs-8  col-md-1">
+
 {{day[0].subjectTeacher.subject.name}},{{day[0].subjectTeacher.teacher.FName}},
 {{day[0].subjectTeacher.teacher.LName}},{{day[0].room}} <textarea
 	class="col-md-12" ng-show="showTextBox" row="4" column="6"
