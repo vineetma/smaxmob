@@ -4,21 +4,27 @@ myApp.controller('studentCtrl', [ '$scope', '$window', '$http', '$routeParams',
 			$scope.main = {};
 			var parts = $location.path().split('/');
 			$scope.email = parts[2];
+			$scope.main.title = "Student";
 			$scope.main.menuItems = [ {
 				'url' : '/home/' + $scope.email,
-				'text' : 'Home'
+				'text' : 'Home',
+				'class':'glyphicon glyphicon-home'
 			}, {
 				'url' : '/student/' + $scope.email + '/edit1',
-				'text' : 'Profile'
+				'text' : 'Profile',
+				'class':'glyphicon glyphicon-user'
 			}, {
 				'url' : '/list1/' + $scope.email,
-				'text' : 'Students List'
+				'text' : 'Students List',
+					'class':'glyphicon glyphicon-th-list'
 			}, {
 				'url' : '/timetable1/' + $scope.email,
-				'text' : 'Timetable'
+				'text' : 'Timetable',
+				'class':'glyphicon glyphicon-th-large'
 			}, {
 				'url' : '/logout/' + $scope.email,
-				'text' : 'Logout'
+				'text' : 'Logout',
+				'class':'glyphicon glyphicon-off'
 			} ];
 
 		} ]);

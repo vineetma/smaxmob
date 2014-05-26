@@ -9,9 +9,10 @@ myApp
 						'$routeParams',
 						'$location',
 						'Section',
+						'$filter',
 						function($scope, $window, Department, $http,
-								$routeParams, $location, Section) {
-
+								$routeParams, $location, Section,$filter) {
+							$scope.main.title = "Timetable";
 							partsOfLocation = $location.path().split("/");
 							if (partsOfLocation.length > 1
 									&& partsOfLocation[1] != '') {
@@ -27,7 +28,8 @@ myApp
 								  data : {
 								  'action' : 'myTimetable',
 								  'week' : $scope.week,
-								  'userId' : $scope.email
+								  'userId' : $scope.email,
+								  'date':$filter('date')($scope.dt,'yyyy-MM-dd')
 								   },
 								   success : function(data) {
 								   console.log(data,
@@ -60,23 +62,28 @@ myApp
 													var room = periods[k].room;
 													var week = periods[k].week;
 													var tsId = periods[k].id;
+												    dt = new Date(to.startDate);
+												   $scope.date= dt.toDateString();	
+												   
 													console.log(
 																"Data",
 																day,
 																number,
 																subjectTeacher,
 																room,
+																$scope.date,
 																week,																		
 																tsId);
-											  if (typeof $scope.modTimeTable[day - 1] == 'undefined') {
-														 $scope.modTimeTable[day - 1] = [];
+											  if (typeof $scope.modTimeTable[day ] == 'undefined') {
+														 $scope.modTimeTable[day] = [];
 																			}
-														 $scope.modTimeTable[day - 1].push({
+														 $scope.modTimeTable[day ].push({
 															'tsId' : tsId,
 															'room' : room,
 															'week' : week,
 															'day' : day,
 					     									'number' : number,
+					     									'date' :$scope.date,
 															'subjectTeacher' : subjectTeacher,
 															'department' : department,
 															'section' : section,
@@ -95,15 +102,40 @@ myApp
 												});
 									}
 								});
-					};
+					}; 
+					
+					$scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+				     $scope.format = $scope.formats[0];
+				     
+				     $scope.today = function() {
+				         $scope.dt = new Date();
+				     };
+				     $scope.today();
+				     $scope.disabled = function(date, mode) {
+				             return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+				     };
+				     $scope.open = function($event) {
+				                 $event.preventDefault();
+				                 $event.stopPropagation();
+
+				                 $scope.opened = true;
+				     };
+				     
+				     $scope.$watch('dt',function(nv,ov){
+					  	  console.log('Date:',$scope.dt); 
+					     });
+					
 							$scope.$watch('userNotes2', function(ov, nv) {
 								console.log("User notes changed", ov, nv);
 							});
 
+							
+							
 						} ]);
 myApp.controller('ttRowCtrl', [ '$scope', '$window', '$http', '$routeParams',
 		'$location', function($scope, $window, $http, $routeParams, $location) {
 		} ]);
+
 
 myApp.controller('ttCellCtrl', [ '$scope', '$window', '$http', '$routeParams',
 		'$location', 'Department',

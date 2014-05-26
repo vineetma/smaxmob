@@ -12,8 +12,10 @@ myApp
 						'Semester',
 						function($scope, $rootScope, $window, $location, $http,
 								Department, Section, Semester) {
+//							alert("Got:"+$location.path()+$window.location);
 							if ($location.path().split('/')[1] == 'logout') {
-								$window.location = baseURL;
+								//alert("URL"+baseURL);
+								$window.location = "index.html";
 							}
 							$scope.main.title = "List of students";
 							$scope.departmentOptions = Department.getOptions();

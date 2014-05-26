@@ -1,31 +1,34 @@
+<div class="form-group">
+<input type="hidden" ng-model="id" />
 
-<form align="center"><input type="hidden" ng-model="id" />
+<input type="text" placeholder="First Name"
+	ng-model="firstName" class="form-control"/><br>
+	
+
+<input type="text" placeholder="Last Name" ng-model="lastName" class="form-control"  /><br>
 
 
-<div class="controls"><input type="text" placeholder="First Name"
-	ng-model="firstName" /><br />
+<input type="password" placeholder="Password" ng-model="password" class="form-control"  /> <br>
 
-<input type="text" placeholder="Last Name" ng-model="lastName" /><br />
 
-<input type="password" placeholder="Password" ng-model="password" /> <br />
+<input type="text" placeholder="Roll No" ng-model="rollNo" class="form-control"  /><br>
 
-<input type="text" placeholder="Roll No" ng-model="rollNo" /> <br />
 
-<input type="text" placeholder="E-Mail" ng-model="email" /> <br />
+<input type="text" placeholder="E-Mail" ng-model="email" class="form-control"  /><br>
 </div>
 
 <select ng-model="department"
-	ng-options="d.name for d in departmentOptions">
+	ng-options="d.name for d in departmentOptions" class="form-control">
 	<option value="">---select department---</option>
 
 </select> <br />
 
-<select ng-model="section" ng-options="s.name for s in sectionOptions">
+<select ng-model="section" ng-options="s.name for s in sectionOptions" class="form-control">
 	<option value="">---select section---</option>
 
 </select> <br />
 <select ng-model="semester"
-	ng-options="sm.name for sm in semesterOptions">
+	ng-options="sm.name for sm in semesterOptions" class="form-control">
 	<option value="">---select Semester---</option>
 
 </select> <br />
@@ -38,7 +41,7 @@
 	<input class="btn btn-primary" type="button" name="update" value="Update"
 	ng-click="updateStudent()" /></div>
 </div>
-</form>
+
 Data Entered by you:
 <br />
 Response: {{status}}: {{statusCode}}, {{statusMessage}}

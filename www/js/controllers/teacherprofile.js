@@ -130,5 +130,6 @@ myApp
 							if ($location.path().split("/")[3] == "edit"){
 								$scope.readTeacher();
 								$scope.hideSelection = true;
+								$scope.main.title = 'Edit-Profile';
 							}
 						} ]);

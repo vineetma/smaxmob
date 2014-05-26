@@ -10,14 +10,15 @@ myApp
 						'Department',
 						'Section',
 						'Semester',
+						'$filter',
 						function($scope, $window, $http, $routeParams,
-								$location, Department, Section, Semester) {
+								$location, Department, Section, Semester,$filter) {
 							$scope.departmentOptions = Department.getOptions();
 							$scope.sectionOptions = Section.getOptions();
 							$scope.semesterOptions = Semester.getOptions();
-						
+							$scope.main.title = "Timetable";
 						    $scope.email = $routeParams.email;
-						    
+						    var parts = $location.path().split('/');
 							var readStudent = function() {
 								$
 										.ajax({
@@ -82,7 +83,8 @@ myApp
 												'action' : 'getWeek',
 												'term' : $scope.semester.value,
 												'section' : $scope.section.value,
-												'department' : $scope.department.value
+												'department' : $scope.department.value,
+												'date':$filter('date')($scope.dt,'yyyy-MM-dd')
 
 											},
 											success : function(data) {
@@ -98,9 +100,12 @@ myApp
 																for(var d = 0; d < $scope.timeTable[0].length; d++) {
 																		day = $scope.timeTable[0][d][0].day;
 																		dt = new Date(data.timeSlots.timetableObject.startDate);
-																		dt.setDate(dt.getDate()+day-1);
+																	//	dt.setDate(dt.getDate()+day-1);
 																		$scope.timeTable[0][d].date = dt.toDateString();
 																}
+															}
+															else{
+																alert("No data available");
 															}
 															console.log($scope.timeTable);
 														});
@@ -110,13 +115,35 @@ myApp
 							$scope.$watch('userNotes2', function(ov, nv) {
 								console.log("User notes changed", ov, nv);
 							});
+							$scope.formats = ['yyyy-MM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+						     $scope.format = $scope.formats[0];
+						     
+						     $scope.today = function() {
+						         $scope.dt = new Date();
+						     };
+						     $scope.today();
+						     $scope.disabled = function(date, mode) {
+						             return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+						     };
+						     $scope.open = function($event) {
+						                 $event.preventDefault();
+						                 $event.stopPropagation();
 
-							if ($location.path().split("/")[1] == "timetable1" ||"home" ){
-								readStudent();
-							$scope.hideSelection = true;
+						                 $scope.opened = true;
+						     };
+						     
+					
 							
-							}
 
+							if (parts[1] == "timetable1"  ){
+								readStudent();
+							$scope.hideSelection = true;							
+							}
+							else if(parts[1] == "home"){
+								readStudent();
+								$scope.hideSelection = true;
+							}
+							
 						} ]);
 myApp.controller('ttRowCtrl', [ '$scope', '$window', '$http', '$routeParams',
 		'$location', function($scope, $window, $http, $routeParams, $location) {

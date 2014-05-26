@@ -2,7 +2,8 @@
 
 var myApp = angular.module('myapp', [
 //    'ngTouch',
-'ngRoute'//,
+'ngRoute',
+'ui.bootstrap'
 //    'ngAnimate',
 //    'myApp.controllers',
 //    'myApp.memoryServices'

@@ -1,16 +1,17 @@
-
-<form align="center"><input type="hidden" ng-model="id" />
-<div class="controls"><!--<label for="firstName">First Name: </label> -->
-<input type="text" placeholder="First Name" ng-model="firstName" /><br />
-<!--<label for="lastName">Last Name: </label> --> <input type="text"
-	placeholder="Last Name" ng-model="lastName" /><br />
-<!--<label for="password">Password</label> --> <input type="password"
-	placeholder="Password" ng-model="password" /> <br />
-<input type="text" placeholder="Teacher-Id" ng-model="teacherId" /> <br />
-<input type="text" placeholder="E-Mail" ng-model="email" /> <br />
+<div class="form-group">
+<input type="hidden" ng-model="id" />
+<div class="controls">
+<input type="text" placeholder="First Name" ng-model="firstName"class="form-control" /><br />
+ <input type="text"
+	placeholder="Last Name" ng-model="lastName" class="form-control" /><br />
+ <input type="password"
+	placeholder="Password" ng-model="password" class="form-control"/> <br />
+<input type="text" placeholder="Teacher-Id" ng-model="teacherId" class="form-control"  /> <br />
+<input type="text" placeholder="E-Mail" ng-model="email" class="form-control" /> <br />
+</div>
 </div>
 <select ng-model="department"
-	ng-options="d.name for d in departmentOptions">
+	ng-options="d.name for d in departmentOptions" class="form-control">
 	<option value="">---select department---</option>
 
 </select><br />
@@ -21,7 +22,7 @@
 	ng-hide="hideSelection" /> <input type="button" name="update"
 	value="Update" ng-click="updateTeacher()" class="btn btn-primary" /></div>
 </div>
-</form>
+
 
 Data Entered by you:
 <br />

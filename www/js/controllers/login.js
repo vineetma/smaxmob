@@ -9,7 +9,9 @@ myApp
 							console.log("In here..");
 							$scope.main.menuItems = [ {
 								'url' : '/',
+								'class':'glyphicon glyphicon-home',
 								'text' : 'Home'
+								
 							} ];
 							$scope.main.title = "Login";
 							$scope.login = function() {
@@ -40,7 +42,7 @@ myApp
 																			.log("Compared...");
 																	$window.location = "admin.html";
 																} else if ($scope.user_role == 2) {
-																	$window.location = "student.html#/timetable/"
+																	$window.location = "student.html#/home/"
 																			+ $scope.userEmail;
 
 																} else if ($scope.user_role == 3) {
@@ -55,7 +57,7 @@ myApp
 
 							};
 							$scope.signUp = function() {
-								$window.location = "NewUser.html#/add/";
+								$window.location = "newUser.html";
 							};
 
 						} ]);

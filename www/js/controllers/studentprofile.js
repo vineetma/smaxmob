@@ -149,9 +149,7 @@ myApp
 							if ($location.path().split("/")[3] == "edit1"){
 								$scope.readStudent();
 								$scope.hideSelection = true;
+								$scope.main.title = 'Edit-Profile';
 							}
-							$scope.back = function() {
-								$location.path("navigation/" + $scope.email);
-							};
-
+							
 						} ]);

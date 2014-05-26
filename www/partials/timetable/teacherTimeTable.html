@@ -1,34 +1,28 @@
-<form align="center"><input type="hidden" ng-model="id" /> <select
-	ng-model="week">
-	<option value="">--Select Week--</option>
-	<option value="1">1</option>
-	<option value="2">2</option>
-</select> <br>
-<br>
+
+
+<div class="col-md-3 col-xs-12" >
+                 <p class="input-group">
+                   <input type="text" class="form-control" datepicker-popup="{{format}}"  ng-model="dt" is-open="opened"
+                     max-date="'2017-06-22'" datepicker-options="dateOptions"  ng-change="loadUser()" ng-required="true"
+                      close-text="Close" />
+                   <span class="input-group-btn">
+                     <button type="button" class="btn btn-danger" ng-click="open($event) 
+                     "><i class="glyphicon glyphicon-calendar"></i></button>
+                     <input class="btn btn-primary" type="button" name="create"
+	ng-click="teachertimeTable()" value="GO" />
+                   </span>
+                 </p>
+              
+             </div>
 
 
 
-<input class="btn btn-primary" type="button" name="create"
-	ng-click="teachertimeTable()" value="GO" /></form>
-Data Entered by you:
+<div class="row  show-grid"  ng-repeat="day in modTimeTable track by $index" >
+<div class="col-xs-12  col-md-1"></div>
 <br />
-Response: {{status}}: {{statusCode}}, {{statusMessage}}
-<div class="row show-grid hidden-xs">
-<div class="col-xs-12 col-md-1">Day</div>
-<div class="col-xs-offset-1 col-md-offset-0 col-xs-8 col-md-1">P1</div>
-<div class="col-xs-offset-1 col-md-offset-0 col-xs-8 col-md-1">P2</div>
-<div class="col-xs-offset-1 col-md-offset-0 col-xs-8 col-md-1">P3</div>
-<div class="col-xs-offset-1 col-md-offset-0 col-xs-8 col-md-1">P4</div>
-<div class="col-xs-offset-1 col-md-offset-0 col-xs-8 col-md-1">P5</div>
-<div class="col-xs-offset-1 col-md-offset-0 col-xs-8 col-md-1">P6</div>
-
-</div>
-<div class="row  show-grid" ng-repeat="day in modTimeTable">
-<div class="col-xs-12  col-md-1">Day #{{day[0].day}}</div>
-<br />
-<div class="show-grid col-xs-offset-1" ng-repeat="period in day"
+<div class="show-grid col-xs-offset-1" ng-repeat="period in day track by $index"
 	ng-controller='ttCellCtrl'>
-<div>Period:{{period.number}}, Room:{{period.room}}, Department:
+<div><h4> Period:{{period.number}}</h4> Room:{{period.room}}, Department:
 {{period.department.name}}, Section:{{period.section.name}},
 Semester:{{period.semester}},
 Subject:{{period.subjectTeacher.subject.name}} <textarea

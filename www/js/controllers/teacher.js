@@ -7,24 +7,32 @@ myApp.controller('teacherCtrl', [ '$scope', '$window', '$http', '$routeParams',
 				$window.location = baseURL;
 			}
 			$scope.email = parts[2];
+			$scope.main.title = "Teacher";
+			
 			$scope.main.menuItems = [ {
 				'url' : '/home/' + $scope.email,
-				'text' : 'Home'
+				'text' : 'Home',
+				'class':'glyphicon glyphicon-home'
 			}, {
 				'url' : '/teacher/' + $scope.email + '/edit',
-				'text' : 'Profile'
+				'text' : 'Profile',
+				'class':'glyphicon glyphicon-user'
 			}, {
 				'url' : '/classTimetable/' + $scope.email,
-				'text' : 'Class Timetable'
+				'text' : 'Class Timetable',
+				'class':'glyphicon glyphicon-th-large'
 			}, {
 				'url' : '/list/' + $scope.email,
-				'text' : 'Students List'
+				'text' : 'Students List',
+				'class':'glyphicon glyphicon-th-list'
 			}, {
 				'url' : '/timetable/' + $scope.email,
-				'text' : 'Timetable'
+				'text' : 'Timetable',
+				'class':'glyphicon glyphicon-th-large'
 			}, {
 				'url' : '/logout/' + $scope.email,
-				'text' : 'Logout'
+				'text' : 'Logout',
+					'class':'glyphicon glyphicon-off'
 			} ];
 
 		} ]);

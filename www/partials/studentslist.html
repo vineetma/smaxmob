@@ -1,15 +1,15 @@
-<form><select ng-model="department"
+<form><select ng-model="department" class="form-control"
 	ng-options="d.name for d in departmentOptions" ng-hide="hideSelection">
 	<option value="">---select department---</option>
 
 </select><br />
 
 <select ng-model="semester"
-	ng-options="sm.name for sm in semesterOptions" ng-hide="hideSelection">
+	ng-options="sm.name for sm in semesterOptions" ng-hide="hideSelection" class="form-control">
 	<option value="">---select Semester---</option>
 
 </select> <br />
-<select ng-model="section" ng-options="s.name for s in sectionOptions" ng-hide="hideSelection">
+<select ng-model="section" ng-options="s.name for s in sectionOptions" ng-hide="hideSelection" class="form-control">
 	<option value="">---select sections---</option>
 
 </select> <br />
@@ -21,18 +21,17 @@
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<th>Roll no</th>
-			<th>First name</th>
-			<th>Last Name</th>
-			<th>Call/SMS/EMail</th>
+			<th><h5>Roll no</h5></th>
+			<th><h5>Name</h5></th>
+			<th><h5>EMail</h5></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="s in studentList">
 			<td>{{s.rollNo}}</td>
-			<td>{{s.firstName}}</td>
-			<td>{{s.lastName}}</td>
-			<td></td>
+			<td>{{s.firstName}} {{s.lastName}} </td>
+			<td>{{s.email}}</td>
+			
 		</tr>
 	</tbody>
 </table>

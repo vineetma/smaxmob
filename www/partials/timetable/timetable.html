@@ -1,97 +1,105 @@
-<h1 align="center">Timetable</h1>
-<form align="center"><input type="hidden" ng-model="id" /> <select
-	ng-model="department" ng-options="d.name for d in departmentOptions" ng-hide="hideSelection">
+
+<div class="col-md-12 col-xs-12 " >
+                 <p class="input-group">
+                   <input type="text" class="form-control" datepicker-popup="{{format}}"  ng-model="dt" is-open="opened"
+                     max-date="'2017-06-22'" datepicker-options="dateOptions"  ng-change="loadUser()" ng-required="true"
+                      close-text="Close" />
+                   <span class="input-group-btn">
+                     <button type="button" class="btn btn-danger" ng-click="open($event) 
+                     "><i class="glyphicon glyphicon-calendar"></i></button>
+                     <input class="btn btn-primary" type="button" name="create"
+	ng-click="getTimeTable()" value="GO">
+                     
+                   </span>
+                 </p>
+             </div>
+             <br>
+<input type="hidden" ng-model="id" /> <select
+	ng-model="department" ng-options="d.name for d in departmentOptions" ng-hide="hideSelection" class="form-control">
 	<option value="">---select department---</option>
 
 </select> <br />
 <select ng-model="semester"
-	ng-options="sm.name for sm in semesterOptions" ng-hide="hideSelection">
+	ng-options="sm.name for sm in semesterOptions" ng-hide="hideSelection" class="form-control">
 	<option value="">---select Semester---</option>
 
 </select> <br />
 
-<select ng-model="section" ng-options="s.name for s in sectionOptions" ng-hide="hideSelection">
+<select ng-model="section" ng-options="s.name for s in sectionOptions" ng-hide="hideSelection" class="form-control">
 	<option value="">---select section---</option>
 
-</select> <br />
-<br>
-<br>
-
-<input class="btn btn-primary" type="button" name="create"
-	ng-click="timeTable()" value="GO" / ng-hide="hideSelection"></form>
+</select>
 
 
-<div class="row  show-grid" ng-repeat="day in timeTable[0]"
+
+<div class="row" ng-repeat="day in timeTable[0]"
 	ng-controller='ttRowCtrl'>
-<div class="col-xs-12  col-md-1">Day #{{day[0].day}}<br/>{{day.date}}</div>
+<div class="col-xs-12  col-md-1"></div>
 
 
 <!-- p1-->
-<div ng-controller='ttCellCtrl' class="col-xs-12">
-<div class="hidden-md hidden-lg hidden-sm col-xs-1 col-xs-offset-1">P12</div>
-<div class="col-xs-8  col-md-1">
-
+<div ng-controller='ttCellCtrl' class="col-xs-12 ">
+<div class=" col-xs-offset-1">
+ <h4>Period 1</h4>
 {{day[0].subjectTeacher.subject.name}},{{day[0].subjectTeacher.teacher.FName}},
 {{day[0].subjectTeacher.teacher.LName}},{{day[0].room}} <textarea
 	class="col-md-12" ng-show="showTextBox" row="4" column="6"
 	ng-model="userNotes">
 		</textarea> <br />
-<button ng-click="saveNotes(0)" ng-show="showTextBox" type="button"
-	class="btn btn-default btn-xs"><span class="glyphicon-ok"></span>S
-</button>
-<button type="button" class="btn btn-default btn-xs"
-	ng-hide="showTextBox" ng-click="showTextBox=true"><span
-	class="glyphicon-pencil" ng-hide="hideSelection" ></span>E</button>
-<button type="button" class="btn btn-default btn-xs"
-	ng-show="showTextBox" ng-click="showTextBox=false"><span
-	class="glyphicon-pencil"></span>C</button>
+<span ng-click="saveNotes(0)" ng-show="showTextBox" 
+	 class="glyphicon glyphicon-save">save</span>
+
+
+<span	ng-hide="showTextBox" ng-click="showTextBox=true" ng-hide="hideSelection"
+	class="glyphicon glyphicon-plus"  > </span>
+
+<span	ng-show="showTextBox" ng-click="showTextBox=false"
+	class="glyphicon glyphicon-remove">cancel</span>
 
 <div ng-show="showNotes">
 <div ng-repeat="n in notes.notes"><span
-	style="font-size: 8px; font-style: italic;">{{n.stn_dt}},
+	style="font-size: 12px; font-style: italic;">{{n.stn_dt}},
 {{n.userNotes}}</span></div>
-{{notes.userNotes}}</div>
-<button ng-click="readNotes(0)" ng-hide="showNotes || showTextBox"
-	type="button" class="btn btn-default btn-xs"><span
-	class="glyphicon-ok" ng-hide="hideSelection" ></span>R</button>
-<button ng-show="showNotes" ng-click="showNotes=false" type="button"
-	class="btn btn-default btn-xs"><span class="glyphicon-ok">H</span>
-</button>
+{{notes.userNotes}}
+</div>
+<span class="glyphicon glyphicon-chevron-down" ng-click="readNotes(0)" ng-hide="showNotes || showTextBox"
+	 ng-hide="hideSelection"  ></span>
+<span ng-show="showNotes" ng-click="showNotes=false" class="glyphicon glyphicon-chevron-up"></span>
+
 </div>
 </div>
 
 
 <br />
 <!-- p2-->
-<div ng-controller='ttCellCtrl' class="col-xs-12">
-<div class="hidden-md hidden-lg hidden-sm col-xs-1 col-xs-offset-1">P2</div>
-<div class="col-xs-8  col-md-1">
+<div ng-controller='ttCellCtrl' class="col-xs-12 ">
+<div class=" col-xs-offset-1">
+<h4>Period 2</h4>
 {{day[1].subjectTeacher.subject.name}},{{day[1].subjectTeacher.teacher.FName}},
 {{day[1].subjectTeacher.teacher.LName}},{{day[1].room}} <textarea
 	class="col-md-12" ng-show="showTextBox" row="4" column="6"
 	ng-model="userNotes">
 		</textarea> <br />
-<button ng-click="saveNotes(1)" ng-show="showTextBox" type="button"
-	class="btn btn-default btn-xs"><span class="glyphicon-ok"></span>S
-</button>
-<button type="button" class="btn btn-default btn-xs"
-	ng-hide="showTextBox" ng-click="showTextBox=true"><span
-	class="glyphicon-pencil" ng-hide="hideSelection" ></span>E</button>
-<button type="button" class="btn btn-default btn-xs"
-	ng-show="showTextBox" ng-click="showTextBox=false"><span
-	class="glyphicon-pencil"></span>C</button>
+<span ng-click="saveNotes(1)" ng-show="showTextBox" 
+	 class="glyphicon glyphicon-save">save</span>
+
+
+<span	ng-hide="showTextBox" ng-click="showTextBox=true" ng-hide="hideSelection"
+	class="glyphicon glyphicon-plus"  > </span>
+
+<span	ng-show="showTextBox" ng-click="showTextBox=false"
+	class="glyphicon glyphicon-remove">cancel</span>
 
 <div ng-show="showNotes">
 <div ng-repeat="n in notes.notes"><span
-	style="font-size: 8px; font-style: italic;">{{n.stn_dt}},
+	style="font-size: 12px; font-style: italic;">{{n.stn_dt}},
 {{n.userNotes}}</span></div>
-{{notes.userNotes}}</div>
-<button ng-click="readNotes(1)" ng-hide="showNotes || showTextBox"
-	type="button" class="btn btn-default btn-xs"><span
-	class="glyphicon-ok" ng-hide="hideSelection" ></span>R</button>
-<button ng-show="showNotes" ng-click="showNotes=false" type="button"
-	class="btn btn-default btn-xs"><span class="glyphicon-ok">H</span>
-</button>
+{{notes.userNotes}}
+</div>
+<span class="glyphicon glyphicon-chevron-down" ng-click="readNotes(1)" ng-hide="showNotes || showTextBox"
+	 ng-hide="hideSelection"  ></span>
+<span ng-show="showNotes" ng-click="showNotes=false" class="glyphicon glyphicon-chevron-up"></span>
+
 </div>
 </div>
 
@@ -100,35 +108,34 @@
 
 
 <!-- p3-->
-<div ng-controller='ttCellCtrl' class="col-xs-12">
-<div class="hidden-md hidden-lg hidden-sm col-xs-1 col-xs-offset-1">P3</div>
-<div class="col-xs-8  col-md-1">
+<div ng-controller='ttCellCtrl' class="col-xs-12 ">
+<div class=" col-xs-offset-1">
+<h4>Period 3</h4>
 {{day[2].subjectTeacher.subject.name}},{{day[2].subjectTeacher.teacher.FName}},
 {{day[2].subjectTeacher.teacher.LName}},{{day[2].room}} <textarea
 	class="col-md-12" ng-show="showTextBox" row="4" column="6"
 	ng-model="userNotes">
 		</textarea> <br />
-<button ng-click="saveNotes(2)" ng-show="showTextBox" type="button"
-	class="btn btn-default btn-xs"><span class="glyphicon-ok"></span>S
-</button>
-<button type="button" class="btn btn-default btn-xs"
-	ng-hide="showTextBox" ng-click="showTextBox=true"><span
-	class="glyphicon-pencil" ng-hide="hideSelection" ></span>E</button>
-<button type="button" class="btn btn-default btn-xs"
-	ng-show="showTextBox" ng-click="showTextBox=false"><span
-	class="glyphicon-pencil"></span>C</button>
+<span ng-click="saveNotes(2)" ng-show="showTextBox" 
+	 class="glyphicon glyphicon-save">save</span>
+
+
+<span	ng-hide="showTextBox" ng-click="showTextBox=true" ng-hide="hideSelection"
+	class="glyphicon glyphicon-plus"  > </span>
+
+<span	ng-show="showTextBox" ng-click="showTextBox=false"
+	class="glyphicon glyphicon-remove">cancel</span>
 
 <div ng-show="showNotes">
 <div ng-repeat="n in notes.notes"><span
-	style="font-size: 8px; font-style: italic;">{{n.stn_dt}},
+	style="font-size: 12px; font-style: italic;">{{n.stn_dt}},
 {{n.userNotes}}</span></div>
-{{notes.userNotes}}</div>
-<button ng-click="readNotes(2)" ng-hide="showNotes || showTextBox"
-	type="button" class="btn btn-default btn-xs"><span
-	class="glyphicon-ok" ng-hide="hideSelection" ></span>R</button>
-<button ng-show="showNotes" ng-click="showNotes=false" type="button"
-	class="btn btn-default btn-xs"><span class="glyphicon-ok">H</span>
-</button>
+{{notes.userNotes}}
+</div>
+<span class="glyphicon glyphicon-chevron-down" ng-click="readNotes(2)" ng-hide="showNotes || showTextBox"
+	 ng-hide="hideSelection"  ></span>
+<span ng-show="showNotes" ng-click="showNotes=false" class="glyphicon glyphicon-chevron-up"></span>
+
 </div>
 </div>
 
@@ -136,35 +143,34 @@
 <br />
 
 <!-- p4-->
-<div ng-controller='ttCellCtrl' class="col-xs-12">
-<div class="hidden-md hidden-lg hidden-sm col-xs-1 col-xs-offset-1">P4</div>
-<div class="col-xs-8  col-md-1">
+<div ng-controller='ttCellCtrl' class="col-xs-12 ">
+<div class=" col-xs-offset-1">
+<h4>Period 4</h4>
 {{day[3].subjectTeacher.subject.name}},{{day[3].subjectTeacher.teacher.FName}},
 {{day[3].subjectTeacher.teacher.LName}},{{day[3].room}} <textarea
 	class="col-md-12" ng-show="showTextBox" row="4" column="6"
 	ng-model="userNotes">
 		</textarea> <br />
-<button ng-click="saveNotes(3)" ng-show="showTextBox" type="button"
-	class="btn btn-default btn-xs"><span class="glyphicon-ok"></span>S
-</button>
-<button type="button" class="btn btn-default btn-xs"
-	ng-hide="showTextBox" ng-click="showTextBox=true"><span
-	class="glyphicon-pencil" ng-hide="hideSelection"></span>E</button>
-<button type="button" class="btn btn-default btn-xs"
-	ng-show="showTextBox" ng-click="showTextBox=false"><span
-	class="glyphicon-pencil"></span>C</button>
+<span ng-click="saveNotes(3)" ng-show="showTextBox" 
+	 class="glyphicon glyphicon-save">save</span>
+
+
+<span	ng-hide="showTextBox" ng-click="showTextBox=true" ng-hide="hideSelection"
+	class="glyphicon glyphicon-plus"  > </span>
+
+<span	ng-show="showTextBox" ng-click="showTextBox=false"
+	class="glyphicon glyphicon-remove">cancel</span>
 
 <div ng-show="showNotes">
 <div ng-repeat="n in notes.notes"><span
-	style="font-size: 8px; font-style: italic;">{{n.stn_dt}},
+	style="font-size: 12px; font-style: italic;">{{n.stn_dt}},
 {{n.userNotes}}</span></div>
-{{notes.userNotes}}</div>
-<button ng-click="readNotes(3)" ng-hide="showNotes || showTextBox"
-	type="button" class="btn btn-default btn-xs"><span
-	class="glyphicon-ok" ng-hide="hideSelection"></span>R</button>
-<button ng-show="showNotes" ng-click="showNotes=false" type="button"
-	class="btn btn-default btn-xs"><span class="glyphicon-ok">H</span>
-</button>
+{{notes.userNotes}}
+</div>
+<span class="glyphicon glyphicon-chevron-down" ng-click="readNotes(3)" ng-hide="showNotes || showTextBox"
+	 ng-hide="hideSelection"  ></span>
+<span ng-show="showNotes" ng-click="showNotes=false" class="glyphicon glyphicon-chevron-up"></span>
+
 </div>
 </div>
 
@@ -174,78 +180,74 @@
 
 
 <!-- p5-->
-<div ng-controller='ttCellCtrl' class="col-xs-12">
-<div class="hidden-md hidden-lg hidden-sm col-xs-1 col-xs-offset-1">P5</div>
-<div class="col-xs-8  col-md-1">
+<div ng-controller='ttCellCtrl' class="col-xs-12 ">
+<div class=" col-xs-offset-1">
+<h4>Period 5</h4>
 {{day[4].subjectTeacher.subject.name}},{{day[4].subjectTeacher.teacher.FName}},
 {{day[4].subjectTeacher.teacher.LName}},{{day[4].room}} <textarea
 	class="col-md-12" ng-show="showTextBox" row="4" column="6"
 	ng-model="userNotes">
 		</textarea> <br />
-<button ng-click="saveNotes(4)" ng-show="showTextBox" type="button"
-	class="btn btn-default btn-xs"><span class="glyphicon-ok"></span>S
-</button>
-<button type="button" class="btn btn-default btn-xs"
-	ng-hide="showTextBox" ng-click="showTextBox=true"><span
-	class="glyphicon-pencil" ng-hide="hideSelection"></span>E</button>
-<button type="button" class="btn btn-default btn-xs"
-	ng-show="showTextBox" ng-click="showTextBox=false"><span
-	class="glyphicon-pencil"></span>C</button>
+<span ng-click="saveNotes(4)" ng-show="showTextBox" 
+	 class="glyphicon glyphicon-save">save</span>
+
+
+<span	ng-hide="showTextBox" ng-click="showTextBox=true" ng-hide="hideSelection"
+	class="glyphicon glyphicon-plus"  > </span>
+
+<span	ng-show="showTextBox" ng-click="showTextBox=false"
+	class="glyphicon glyphicon-remove">cancel</span>
 
 <div ng-show="showNotes">
 <div ng-repeat="n in notes.notes"><span
-	style="font-size: 8px; font-style: italic;">{{n.stn_dt}},
+	style="font-size: 12px; font-style: italic;">{{n.stn_dt}},
 {{n.userNotes}}</span></div>
-{{notes.userNotes}}</div>
-<button ng-click="readNotes(4)" ng-hide="showNotes || showTextBox"
-	type="button" class="btn btn-default btn-xs"><span
-	class="glyphicon-ok" ng-hide="hideSelection"></span>R</button>
-<button ng-show="showNotes" ng-click="showNotes=false" type="button"
-	class="btn btn-default btn-xs"><span class="glyphicon-ok">H</span>
-</button>
+{{notes.userNotes}}
 </div>
-</div>
+<span class="glyphicon glyphicon-chevron-down" ng-click="readNotes(4)" ng-hide="showNotes || showTextBox"
+	 ng-hide="hideSelection"  ></span>
+<span ng-show="showNotes" ng-click="showNotes=false" class="glyphicon glyphicon-chevron-up"></span>
 
+</div>
+</div>
 
 <br />
 
 
 <!-- p6-->
-<div ng-controller='ttCellCtrl' class="col-xs-12">
-<div class="hidden-md hidden-lg hidden-sm col-xs-1 col-xs-offset-1">P6</div>
-<div class="col-xs-8  col-md-1">
+<div ng-controller='ttCellCtrl' class="col-xs-12 ">
+<div class=" col-xs-offset-1">
+<h4>Period 6</h4>
 {{day[5].subjectTeacher.subject.name}},{{day[5].subjectTeacher.teacher.FName}},
 {{day[5].subjectTeacher.teacher.LName}},{{day[5].room}} <textarea
 	class="col-md-12" ng-show="showTextBox" row="4" column="6"
 	ng-model="userNotes">
 		</textarea> <br />
-<button ng-click="saveNotes(5)" ng-show="showTextBox" type="button"
-	class="btn btn-default btn-xs"><span class="glyphicon-ok"></span>S
-</button>
-<button type="button" class="btn btn-default btn-xs"
-	ng-hide="showTextBox" ng-click="showTextBox=true"><span
-	class="glyphicon-pencil" ng-hide="hideSelection"></span>E</button>
-<button type="button" class="btn btn-default btn-xs"
-	ng-show="showTextBox" ng-click="showTextBox=false"><span
-	class="glyphicon-pencil"></span>C</button>
+<span ng-click="saveNotes(5)" ng-show="showTextBox" 
+	 class="glyphicon glyphicon-save">save</span>
+
+
+<span	ng-hide="showTextBox" ng-click="showTextBox=true" ng-hide="hideSelection"
+	class="glyphicon glyphicon-plus"  > </span>
+
+<span	ng-show="showTextBox" ng-click="showTextBox=false"
+	class="glyphicon glyphicon-remove">cancel</span>
 
 <div ng-show="showNotes">
 <div ng-repeat="n in notes.notes"><span
-	style="font-size: 8px; font-style: italic;">{{n.stn_dt}},
+	style="font-size: 12px; font-style: italic;">{{n.stn_dt}},
 {{n.userNotes}}</span></div>
-{{notes.userNotes}}</div>
-<button ng-click="readNotes(5)" ng-hide="showNotes || showTextBox"
-	type="button" class="btn btn-default btn-xs"><span
-	class="glyphicon-ok" ng-hide="hideSelection"></span>R</button>
-<button ng-show="showNotes" ng-click="showNotes=false" type="button"
-	class="btn btn-default btn-xs"><span class="glyphicon-ok">H</span>
-</button>
+{{notes.userNotes}}
+</div>
+<span class="glyphicon glyphicon-chevron-down" ng-click="readNotes(5)" ng-hide="showNotes || showTextBox"
+	 ng-hide="hideSelection"  ></span>
+<span ng-show="showNotes" ng-click="showNotes=false" class="glyphicon glyphicon-chevron-up"></span>
+
+</div>
 </div>
 </div>
 
 
-<br />
-</div>
 <div>Data Entered by you:
 <br />
 Response: {{status}}: {{statusCode}}, {{statusMessage}}</div> 
