@@ -13,13 +13,9 @@ myApp
 						function($scope, $window, Department, $http,
 								$routeParams, $location, Section,$filter) {
 							$scope.main.title = "Timetable";
-							partsOfLocation = $location.path().split("/");
-							if (partsOfLocation.length > 1
-									&& partsOfLocation[1] != '') {
-								$scope.hideSelection = true;
-								$scope.email = partsOfLocation[2];
-							}
-
+						
+							 $scope.email = $routeParams.email;
+							 var parts = $location.path().split('/');
 							$scope.teachertimeTable = function() {
 								$
 								 .ajax({
@@ -129,7 +125,15 @@ myApp
 								console.log("User notes changed", ov, nv);
 							});
 
-							
+							if (parts[1] == "timetable"  ){
+								console.log('parts',$location.path());
+								$scope.teachertimeTable();
+														
+							}else if(parts[1] == "home"  ){
+								console.log('parts',$scope.email);
+								$scope.teachertimeTable();
+														
+							}
 							
 						} ]);
 myApp.controller('ttRowCtrl', [ '$scope', '$window', '$http', '$routeParams',
@@ -137,14 +141,10 @@ myApp.controller('ttRowCtrl', [ '$scope', '$window', '$http', '$routeParams',
 		} ]);
 
 
-myApp.controller('ttCellCtrl', [ '$scope', '$window', '$http', '$routeParams',
+myApp.controller('ttCellCtrl1', [ '$scope', '$window', '$http', '$routeParams',
 		'$location', 'Department',
 		function($scope, $window, $http, $routeParams, $location, Department) {
-			partsOfLocation = $location.path().split("/");
-			if (partsOfLocation.length > 1 && partsOfLocation[1] != '') {
-				$scope.hideSelection = true;
-				$scope.email = partsOfLocation[1];
-			}
+		
 
 			$scope.saveNotes = function() {
 				console.log("Notes: ", $scope.userNotes, $scope.period.tsId);

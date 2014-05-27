@@ -46,9 +46,9 @@ myApp
 																			+ $scope.userEmail;
 
 																} else if ($scope.user_role == 3) {
-																	$window.location = "teacher.html#/timetable/"
+																	$window.location = "teacher.html#/home/"
 																			+ $scope.userEmail;
-
+                                                                     
 																}
 															}
 														});

@@ -1,15 +1,12 @@
 myApp.config([ '$routeProvider', function($routeProvider) {
-	$routeProvider.when('/', {
-		templateUrl : 'partials/studentslist.html',
-		controller : 'studentlistCtrl'
-	}).when('/student', {
+	$routeProvider.when('/student', {
 		templateUrl : 'partials/user/StudentForm.html',
 		controller : 'studentProfileCtrl'
 	}).when('/teacher', {
 		templateUrl : 'partials/user/TeacherForm.html',
 		controller : 'teacherProfileCtrl'
-	}).when('/logout/', {
-		templateUrl : 'partials/logout.html',
-		controller : 'logoutCtrl'
-	});
+	}).when('/back', {
+		templateUrl : 'newUser.html',
+		controller : 'newUser_Ctrl'
+	})
 } ]);

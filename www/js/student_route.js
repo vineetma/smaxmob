@@ -12,7 +12,7 @@ myApp.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : 'partials/timetable/timetable.html',
 		controller : 'weekTimeTableCtrl'
 	}).when('/logout/:email', {
-		templateUrl : 'partials/timetable/timetable.html',
-		controller : 'studentlistCtrl'
+		templateUrl : 'partials/logout.html',
+		controller : 'logoutCtrl'
 	});
 } ]);

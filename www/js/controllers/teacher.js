@@ -3,36 +3,26 @@ myApp.controller('teacherCtrl', [ '$scope', '$window', '$http', '$routeParams',
 			console.log("In studentCtrl", $location.path());
 			$scope.main = {};
 			var parts = $location.path().split('/');
-			if ($location.path() == '/logout') {
-				$window.location = baseURL;
-			}
-			$scope.email = parts[2];
-			$scope.main.title = "Teacher";
 			
+			$scope.email = parts[2];
 			$scope.main.menuItems = [ {
 				'url' : '/home/' + $scope.email,
-				'text' : 'Home',
-				'class':'glyphicon glyphicon-home'
+				'text' : 'Home'
 			}, {
 				'url' : '/teacher/' + $scope.email + '/edit',
-				'text' : 'Profile',
-				'class':'glyphicon glyphicon-user'
+				'text' : 'Profile'
 			}, {
 				'url' : '/classTimetable/' + $scope.email,
-				'text' : 'Class Timetable',
-				'class':'glyphicon glyphicon-th-large'
+				'text' : 'Class Timetable'
 			}, {
 				'url' : '/list/' + $scope.email,
-				'text' : 'Students List',
-				'class':'glyphicon glyphicon-th-list'
+				'text' : 'Students List'
 			}, {
 				'url' : '/timetable/' + $scope.email,
-				'text' : 'Timetable',
-				'class':'glyphicon glyphicon-th-large'
+				'text' : 'Timetable'
 			}, {
 				'url' : '/logout/' + $scope.email,
-				'text' : 'Logout',
-					'class':'glyphicon glyphicon-off'
+				'text' : 'Logout'
 			} ];
 
 		} ]);

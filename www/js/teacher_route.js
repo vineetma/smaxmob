@@ -12,8 +12,8 @@ myApp.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : 'partials/timetable/teacherTimeTable.html',
 		controller : 'TeacherTimetableCtrl'
 	}).when('/logout/:email', {
-		templateUrl : 'partials/user/TeacherForm.html',
-		controller : 'studentlistCtrl'
+		templateUrl : 'partials/logout.html',
+		controller : 'logoutCtrl'
 	})
 	.when('/classTimetable/:email', {
 		templateUrl : 'partials/timetable/timetable.html',

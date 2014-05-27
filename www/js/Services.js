@@ -1,12 +1,12 @@
 myApp.service('Department', function() {
 	var options = [ {
-		name : 'electronics',
+		name : 'Electronics',
 		value : '1'
 	}, {
-		name : 'mechnical',
+		name : 'Mechnical',
 		value : '2'
 	}, {
-		name : 'civil',
+		name : 'Civil',
 		value : '3'
 	} ];
 	this.getIndexByvalue = function(val) {

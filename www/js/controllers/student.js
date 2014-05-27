@@ -4,7 +4,7 @@ myApp.controller('studentCtrl', [ '$scope', '$window', '$http', '$routeParams',
 			$scope.main = {};
 			var parts = $location.path().split('/');
 			$scope.email = parts[2];
-			$scope.main.title = "Student";
+			
 			$scope.main.menuItems = [ {
 				'url' : '/home/' + $scope.email,
 				'text' : 'Home',
