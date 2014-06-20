@@ -28,7 +28,7 @@ myApp.service('Section', function() {
 	}, {
 		name : 'B',
 		value : '2'
-	}, ];
+	} ];
 	this.getIndexByvalue = function(val) {
 		for ( var i = 0; i < options.length; i++) {
 			if (options[i].value == val) {
@@ -47,6 +47,24 @@ myApp.service('Semester', function() {
 	}, {
 		name : 'Semester-2',
 		value : '2'
+	},{
+		name : 'Semester-3',
+		value : '3'
+	},{
+		name : 'Semester-4',
+		value : '4'
+	},{
+		name : 'Semester-5',
+		value : '5'
+	},{
+		name : 'Semester-6',
+		value : '6'
+	},{
+		name : 'Semester-7',
+		value : '7'
+	},{
+		name : 'Semester-8',
+		value : '8'
 	}, ];
 	this.getIndexByvalue = function(val) {
 		for ( var j = 0; j < options.length; j++) {
